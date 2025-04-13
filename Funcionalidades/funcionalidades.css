@@ -5,7 +5,7 @@
 }
 
 body {
-    background-color: #ebe7fa;
+    background-color: #efecf9;
 }
 
 .container {
@@ -47,7 +47,7 @@ body {
     display: flex;
     align-items: flex-start;
     margin-bottom: 30px;
-    background-color: #ebe7fa;
+    background-color: #efecf9;
     padding: 10px;
     border-radius: 10px;
 }
