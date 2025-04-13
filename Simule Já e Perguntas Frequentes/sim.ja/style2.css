@@ -1,0 +1,95 @@
+.container{
+    display: flex;
+    text-align: left;  
+    justify-content: space-between;
+    align-items: center;
+
+    width: 85%;
+    height: 400px;
+    top: 15%;
+    left: 6%;
+
+    position: absolute;
+    border-radius: 25px;
+    gap: 40px;
+
+
+    background: linear-gradient(
+        120deg, 
+        #d9d0f0 0%,       
+        #d9d0f0 60.8%,
+        #7a9b76 60.8%,
+        #7a9b76 61%,      
+        #c1d6bd 61%, 
+        #c1d6bd 75.8%,
+        #7a9b76 75.8%,
+        #7a9b76 76%,
+        #d9d0f0 76%,
+        #d9d0f0 100%
+      );
+      border: 3.5px solid #614ca6 ;
+      border-radius: 28px;
+      padding: 20px;
+
+}
+
+.texto {
+    flex: 1; text-align: left;
+    font-size: 145%;
+    font-weight: 350 bolder;
+    font-family: Poppins, sans-serif;
+}
+
+.container .texto .title {
+
+    font-size: 300%;
+    color: #614ca6;
+    font-weight: 600;
+    font-weight: bolder;
+
+}
+
+.botao {
+    position: absolute;
+    bottom: 50px;
+    right: 140px;
+
+}
+
+.btn-simulador {
+    border: 2px solid #7a9b76 ;
+    background-color: #c1d6bd;
+    border-radius: 10px;
+
+    width: 220px;
+    height: 60px;
+
+    font-size: 130%;
+    font-weight: 300;
+    font-family: Poppins, sans-serif;
+    color:#7a9b76;
+
+    cursor: pointer;
+
+}
+
+.btn-simulador:hover {
+    background-color: #b1c7ad;
+    border-color: #658861;
+}
+
+.container .barrinha {
+    width: 25%;
+    height: 8px;
+    background-color: #614ca6;
+    margin: 10px 0;
+    border-radius: 5px;
+}
+
+.container .flor {
+    height: 100%;
+    width: auto;
+    max-width: 120px;
+    object-fit: contain;
+    align-self: center;
+}
