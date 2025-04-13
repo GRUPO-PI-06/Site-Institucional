@@ -1,0 +1,209 @@
+* {
+  box-sizing: border-box;
+  font-family: Poppins, sans-serif;
+}
+
+body, html {
+    background-color: #eee9ff;
+    min-height: 100vh; /* vh representa a porcentagem de altura da janela do navegador */ 
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%; 
+    margin: 0;
+    padding: 0;
+}
+
+.conteudo-principal {
+  display: flex;
+  align-items: center;
+  position: relative;
+  width: 90%;
+  max-width: 900px;
+  margin-top: 40px;
+}
+
+.brancocard {
+  background-color: white;
+  padding: 40px;
+  border-radius: 2px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  z-index: 1;
+  width: 75.5%;
+}
+
+.form-card h1 {
+  font-size: 28px;
+  color: #614ca6;
+  margin-bottom: 10px;
+  font-family: Poppins, sans-serif;
+}
+
+.form-card p {
+  color: #614ca6;
+  margin-bottom: 20px;
+  font-size: 20px;
+  font-family: Poppins, sans-serif;
+}
+
+.form-card form input,
+.form-card form textarea {
+  width: 83%;
+  padding: 8px;
+  margin-bottom: 15px;
+  border: 2px solid #6b4bb1;
+  border-radius: 17px;
+  font-size: 16px;
+  color: #614ca6;
+  font-family: Poppins, sans-serif;
+}
+
+.form-card form textarea {
+  height: 100px;
+}
+
+.form-card form button {
+  background-color: #b59ef5;
+  color: white;
+  border: 2px solid #6b4bb1;
+  padding: 10px 30px;
+  font-size: 16px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-family: Poppins, sans-serif;
+}
+
+.cardverde {
+  background-color: #b6d4af;
+  padding: 40px 35px;
+  border-radius: 2px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+  z-index: 2;
+  font-family: Poppins, sans-serif;
+  width: 38.9%; 
+  position: absolute;
+  top: 22%;
+  right: -5%; 
+}
+
+.info-card {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  color: #5c3d99;
+  font-size: 15px;
+  line-height: 1.4;
+  font-family: Poppins, sans-serif;
+}
+
+.info-card .item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.info-card .icon {
+  width: 35px;
+  height: 35px;
+}
+
+.rodape {
+  background-color: #f1f6ef;
+  padding: 40px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  width: 100%;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+  color: #614ca6;
+  font-size: 14px;
+  margin-top: 80px;
+}
+
+.rodape-esquerda {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.logo-info {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.logo img {
+    width: 150px;
+  }
+
+.logo {
+  font-size: 28px;
+  margin: 0;
+  font-weight: 600;
+}
+
+.contato,
+.telefones,
+.endereco {
+  margin: 0.5%;
+}
+
+.social-icons {
+  display: flex;
+  gap: 10px;
+}
+
+.social-icon {
+  width: 30px;
+  height: 30px;
+}
+
+.rodape-direita {
+  display: flex;
+  flex-direction: column;
+}
+
+.menu-titulo {
+  font-size: 18px;
+  margin-top: 0;
+  margin-left: -20%;
+  margin-bottom: 15px;
+  font-weight: 500;
+}
+
+.menu-lista {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.menu-lista li {
+  margin-bottom: 10px;
+  margin-left: -20%;
+  font-size: 1em;
+}
+
+.menu-lista a {
+  text-decoration: none;
+  color: #614ca6;
+}
+
+.menu-lista a:hover {
+  text-decoration: underline;
+}
+
+media {
+  .conteudo-principal {
+    flex-direction: column; 
+    align-items: center;
+  }
+
+  .rodape {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 30px;
+  }
+}
