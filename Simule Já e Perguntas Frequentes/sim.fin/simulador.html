@@ -22,12 +22,12 @@
                 <div>
                     <label for="input_plantacao">Tamanho da Plantação em m²:</label>
                     <input class="input-style" type="text" id="input_plantacao">
-                    <span class="erro" style="color: red;"></span>
+                    <span id="input_erro1" style="color: red;"></span>
                 </div>
                <div>
                     <label for="input_qtdOrquidea">Quantidade de Orquideas plantadas:</label>
                     <input class="input-style" type="text" id="input_qtdOrquidea" placeholder="Quantidade">
-                    <span class="erro" style="color: red;"></span>
+                    <span id="input_erro2" style="color: red;"></span>
                </div>
            </div>
     
@@ -35,12 +35,12 @@
                <div>
                     <label for="input_gastos">Gastos gerais:</label>
                     <input class="input-style" type="text" id="input_gastos" placeholder="R$">
-                    <span class="erro" style="color: red;"></span>
+                    <span id="input_erro3" style="color: red;"></span>
                </div>
                <div>
                     <label for="input_venda">Valor de Venda por unidade:</label>
                     <input class="input-style" type="text" id="input_venda" placeholder="R$">
-                    <span class="erro" style="color: red;"></span>
+                    <span id="input_erro4" style="color: red;"></span>
                </div>
             </div>
 
@@ -49,63 +49,81 @@
                 <button class="btnCalcular open" onclick="verificaCampos()">Calcular</button>
             </div>
     </div>
-    <div class="modal-container">
-          <div class="modal-overlay"></div>
-        <div class="modal">
-            <img id="orchid", src="orchid.png">
-            <h1 style="color: #68a354;">Resultados</h1>
-            <p id="p_resultado"></p>    
-            <div class="boxButton">
-                <button class="btnCalcular close">OK</button>
-            </div>
-        </div>
-    </div>
+ 
+        <div id="modal_container"></div>
      
 </body>
 </html>
 <script>
-    var erros = document.querySelectorAll(".erro");
-    //Mostrando e Tirando o modal
-        const overlay = document.querySelector('.modal-overlay');
-        const btnOpen = document.querySelector('.open');
-        const modalContainer = document.querySelector('.modal-container');
-        const btnClose = document.querySelector('.close');
-    btnClose.addEventListener('click' ,() => {
-        modalContainer.classList.remove('show');
-    });
-    overlay.addEventListener('click' ,() => {
-        modalContainer.classList.remove('show');
-    });
-
+    function fecharModal(){
+        input_plantacao.value = "";
+    input_qtdOrquidea.value = "";
+    input_gastos.value = "";
+    input_venda.value = "";
+        modal_container.innerHTML = `
+        <div class="modal-container">
+      <div class="modal-overlay" onclick="fecharModal()"></div>
+    <div class="modal">
+        <h1 style="color: #68a354;">Resultados</h1>
+        <p id="p_resultado"></p>
+        <div class="boxButton">
+            <button class="btnCalcular " onclick="fecharModal()">Fechar</button>
+        </div>
+    </div>
+</div>
+    `
+    
+    }
+    
     //Verificação de campps
    function verificaCampos(){
-    
-    var plantacao = document.querySelector('#input_plantacao');
-    var qtdOrquidea = document.querySelector('#input_qtdOrquidea');
-    var gasto = document.querySelector('#input_gastos');
-    var venda = document.querySelector('#input_venda');
-    if(plantacao.value.length < 1  || qtdOrquidea.value.length < 1  || gasto.value.length < 1  || venda.value.length < 1  ){
-        erros.forEach(e => e.textContent = "Todos os campos são obrigatorios!");
+    var plantacao = Number(input_plantacao.value);
+    var qtdOrquidea = Number(input_qtdOrquidea.value);
+    var gasto = Number(input_gastos.value);
+    var venda = Number(input_venda.value);
+    if(plantacao <= 0  || qtdOrquidea <= 0  || gasto <= 0  || venda <= 0  ){
+        input_erro1.innerHTML = "Todos os campos são obrigatorios!";
+        input_erro2.innerHTML = "Todos os campos são obrigatorios!";
+        input_erro3.innerHTML = "Todos os campos são obrigatorios!";
+        input_erro4.innerHTML = "Todos os campos são obrigatorios!";
         event.preventDefault();
     }else{
-        erros.forEach(e => e.textContent = "");
-        document.querySelector('.modal-container').classList.add('show');
+        input_erro1.innerHTML = "";
+        input_erro2.innerHTML = "";
+        input_erro3.innerHTML = "";
+        input_erro4.innerHTML = "";
+        modal_container.innerHTML = `
+            <div class="modal-container show">
+          <div class="modal-overlay" onclick="fecharModal()"></div>
+        <div class="modal">
+            <h1>Resultados</h1>
+            <p id="p_resultado"></p>
+            <div class="boxButton">
+                <button class="btnCalcular " onclick="fecharModal()">Fechar</button>
+            </div>
+        </div>
+    </div>
+        `
         calcular();
     }
    }
    function limpar(){
-    var plantacao = document.querySelector('#input_plantacao');
-    var qtdOrquidea = document.querySelector('#input_qtdOrquidea');
-    var gasto = document.querySelector('#input_gastos');
-    var venda = document.querySelector('#input_venda');
+    var plantacao = Number(input_plantacao.value);
+    var qtdOrquidea = Number(input_qtdOrquidea.value);
+    var gasto = Number(input_gastos.value);
+    var venda = Number(input_venda.value);
 
-    plantacao.value = "";
-    qtdOrquidea.value = "";
-    gasto.value = "";
-    venda.value = "";
-    erros.forEach(e => e.textContent = "");//tem que ver se pode usar
+    input_plantacao.value = "";
+    input_qtdOrquidea.value = "";
+    input_gastos.value = "";
+    input_venda.value = "";
+
+    input_erro1.innerHTML = "";
+    input_erro2.innerHTML = "";
+    input_erro3.innerHTML = "";
+    input_erro4.innerHTML = "";
+    
    }
-
 </script>
 <script>
     var valMC = 105;    
