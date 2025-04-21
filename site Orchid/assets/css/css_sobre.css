@@ -1,0 +1,545 @@
+@import url('https://fonts.googleapis.com/css2?family=Gloock&family=Poppins:wght@100;200;300;400;500;600;700;800;900&family=Quicksand:wght@300..700&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+    font-family: "Poppins", sans-serif;
+}
+
+:root{
+   --bg-fundo:#fff;   
+   --fundo-verde : #f1f6ef;
+   --color-verde-escuro:#7a9b76; 
+   --fundo--roxo: #eee9ff;
+   --color-roxo: #afa1e1;
+   --color-roxo-escuro: #624da6; 
+   --font-color-black: #000000; 
+}
+
+body{
+    background-color: var(--bg-fundo);
+ }
+
+ .header {
+    width: 100%;
+    background-color: var(--bg-fundo);
+    border-bottom: 2px solid var(--color-roxo-escuro);
+}
+
+.header .container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 4%;
+}
+
+.header .container img {
+    width: 12%;
+    height: auto;
+}
+
+.navbar {
+    display: flex;
+    align-items: center;
+    gap: 2.5rem;
+    list-style: none;
+    max-width: 700px;
+    width: 100%;
+    justify-content: flex-end;
+}
+
+.navbar a {
+    position: relative;
+    color: var(--color-roxo-escuro);
+    text-decoration: none;
+    font-size: 1,5rem;
+    transition: color 0.3s, font-weight 0.3s;
+    padding-bottom: 5px;
+}
+
+.navbar a::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 2px;
+    width: 0%;
+    background-color: var(--color-verde-escuro);
+    transition: width 0.3s ease-in-out;
+}
+
+.navbar a:hover {
+    color: var(--color-roxo);
+}
+
+.navbar a:hover::after,
+.navbar a.active::after {
+    width: 100%;
+}
+
+.navbar a.login,
+.navbar a.cadastro {
+    padding: 0.4em 1.8em;
+    border: 1px solid var(--color-roxo-escuro);
+    background-color: var(--color-roxo);
+    border-radius: 20px;
+    color: white;
+    font-weight: 500;
+    transition: background-color 0.3s, color 0.3s, box-shadow 0.3s;
+}
+
+.navbar a.login::after,
+.navbar a.cadastro::after {
+    content: none;
+}
+
+.navbar a.login:hover,
+.navbar a.cadastro:hover {
+    background-color: var(--color-roxo-escuro);
+    color: #fff;
+    box-shadow: 0px 4px 10px rgba(97, 76, 166, 0.4);
+}
+
+
+#sobre-nos {
+    background-color: var(--fundo-verde);
+    color: var(--color-roxo-escuro);
+    width: 100%;
+    height: 20rem;
+    justify-content: center;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#titulo-principal {
+    display: flex;
+    align-items: center; 
+    gap: 2%; 
+}
+
+#titulo-principal h1{
+    font-weight: 800;
+    font-size: 35px;
+}
+
+#texto-principal p{
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
+    margin-top: 10px;
+    width: 85%;
+}
+
+#texto-principal span {
+    font-weight:700;
+}
+
+#linha-sobre-nos {
+    background-color: var(--color-verde-escuro);
+    width: 42%;
+    height: 3px;
+}
+
+#linha-sobre-nos02 {
+    background-color: var(--color-verde-escuro);
+    width: 42%;
+    height: 3px;
+}
+
+/*CARD DOS PILARES*/
+
+#pilares {
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+#pilares #containers {
+    background-color: var(--bg-fundo);
+    border: 3px solid var(--color-verde-escuro);
+    border-radius: 30px;
+    width: 80%;
+    height: 25rem;
+    margin: 5%;
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 55px 80px 0 80px;
+}
+
+#containers h2 {
+    margin-top: 40px;
+    color: var(--color-roxo-escuro);
+    font-weight: 900;
+}
+
+#linha-pilares {
+    position: absolute;
+    top: 50%;
+    left: 80px;
+    width: 80%;
+    height: 3px;
+    background-color: var(--color-verde-escuro);
+    z-index: 0; 
+}
+
+#missao, #visao, #valores {
+    position: relative;
+    background-color: white; 
+    z-index: 1;
+    border: 3px solid var(--color-roxo-escuro);
+    border-radius: 30px;
+    width: 22%;
+    height: 15rem;
+    align-items: center;
+    justify-content: center;
+    padding: 120px 20px 0 20px;
+}
+
+#valores p {
+    display: flex;
+    padding: 10px 0 0 0 ;
+}
+
+#valores i {
+    color: var(--color-roxo-escuro);
+    font-weight: bold;
+    width: 5px;
+    padding: 5px 15px 0 0;
+}
+
+#icons {
+    background-color: var(--color-roxo-escuro);
+    border-radius: 50%;
+    width: 30%;
+    justify-content: center;
+    align-items: center;
+    padding: 8px;
+    margin-top: -60%;
+}
+
+#icons img {
+    width: 80%;
+}
+
+/*NOSSA HISTORIA*/
+#historia {
+    background-color: var(--fundo-verde);
+    width: 100%;
+    height: 300px;
+    color: var(--color-roxo-escuro);
+}
+
+#historia h2 {
+    font-size: 33px;
+    padding: 30px 0 0 65px;
+    font-weight: 900;
+}
+
+#historia p {
+    width: 90%;
+    font-size: 20px;
+    padding: 10px 0 0 65px;
+}
+
+#historia span {
+    font-weight: 700;
+}
+
+/*Impacto e Tecnologia*/
+#impacto {
+    background-color: var(--fundo--roxo);
+    width: 100%;
+    height: 360px;
+    color: var(--color-roxo-escuro);
+    margin-top: 50px;
+}
+
+#impacto h2 {
+    font-size: 33px;
+    padding: 30px 0 0 65px;
+    font-weight: 900;
+}
+
+#impacto p {
+    width: 90%;
+    font-size: 20px;
+    padding: 10px 0 0 65px;
+}
+/*Nossa Equipe*/
+.titulo-equipe {
+  text-align: center;
+  font-weight: 900;
+  font-size: 33px;
+  margin-bottom: 25px;
+  color: var(--color-roxo-escuro);
+}
+
+.equipe__slider {
+  display: flex;
+  padding: 0 35px;
+  align-items: center;
+  justify-content: center;
+  min-height: 105vh;
+  background: var(--bg-fundo);
+  flex-direction: column;
+}
+
+.equipe {
+  max-width: 1100px;
+  width: 100%;
+  position: relative;
+}
+
+.carousel__equipe {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(2, auto);
+  gap: 30px 40px;
+  border-radius: 8px;
+}
+
+.card-equipe {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  background: #fff;
+  height: auto;
+  list-style: none;
+  border-radius: 20px;
+  border: 2px solid var(--color-roxo-escuro);
+  padding-bottom: 15px;
+}
+
+.card-equipe .img {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: var(--color-roxo-escuro);
+  height: 148px;
+  width: 148px;
+  border-radius: 50%;
+  margin-top: 20px;
+}
+
+.card-equipe .img img {
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid white;
+}
+
+.card-equipe h2 {
+  font-weight: 500;
+  font-size: 28px;
+  margin: 30px 0 0;
+}
+
+.card-equipe span {
+  color: #6A6D78;
+  font-size: 1.31rem;
+  margin-bottom: 15px;
+}
+
+ /*FORMULARIO*/
+ .conteudo-principal {
+    background-color: var(--color-roxo);
+    display: flex;
+    align-items: center;
+    position: relative;
+    width: 100%;
+    height: 700px;
+  }
+  
+  .brancocard {
+    background-color: white;
+    padding: 30px;
+    margin-left: 15%;
+    border-radius: 2px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    z-index: 1;
+    width: 50%;
+    height: 80%;
+  }
+  
+  .form-card h1 {
+    font-size: 28px;
+    color: var(--color-roxo-escuro);
+    margin-bottom: 10px;
+    font-family: Poppins, sans-serif;
+  }
+  
+  .form-card p {
+    color: var(--color-roxo-escuro);
+    margin-bottom: 20px;
+    font-size: 20px;
+    font-family: Poppins, sans-serif;
+  }
+  
+  .form-card form input,
+  .form-card form textarea {
+    width: 83%;
+    padding: 8px;
+    margin-bottom: 15px;
+    border: 2px solid var(--color-roxo-escuro);
+    border-radius: 17px;
+    font-size: 16px;
+    color: var(--color-roxo-escuro);
+    font-family: Poppins, sans-serif;
+  }
+  
+  .form-card form textarea {
+    height: 100px;
+  }
+  
+  .form-card form button {
+    background-color: var(--color-roxo);
+    color: var(--bg-fundo);
+    border: 2px solid var(--roxo);
+    padding: 10px 30px;
+    font-size: 16px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-family: Poppins, sans-serif;
+  }
+  
+  .cardverde {
+    background-color: #b6d4af;
+    padding: 40px 20px;
+    border-radius: 2px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    z-index: 2;
+    font-family: Poppins, sans-serif;
+    width: 30%; 
+    position: absolute;
+    left: 58%;
+  }
+  
+  .info-card {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    color: #5c3d99;
+    font-size: 15px;
+    line-height: 1.4;
+    font-family: Poppins, sans-serif;
+  }
+  
+  .info-card .item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  
+  .info-card .icon {
+    width: 35px;
+    height: 35px;
+  }
+
+  /*RODAPÉ*/
+  .rodape {
+    background-color: #f1f6ef;
+    padding: 40px 100px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    width: 100%;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+    color: var(--color-roxo-escuro);
+    font-size: 14px;
+  }
+  
+  .rodape-esquerda {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  
+  .logo-info {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  
+  .logo img {
+      width: 150px;
+    }
+  
+  .logo {
+    font-size: 28px;
+    margin: 0;
+    font-weight: 600;
+  }
+  
+  .contato,
+  .telefones,
+  .endereco {
+    margin: 0.5%;
+  }
+  
+  .social-icons {
+    display: flex;
+    gap: 10px;
+  }
+  
+  .social-icon {
+    width: 30px;
+    height: 30px;
+  }
+  
+  .rodape-direita {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .menu-titulo {
+    font-size: 18px;
+    margin-top: 0;
+    margin-left: -20%;
+    margin-bottom: 15px;
+    font-weight: 500;
+  }
+  
+  .menu-lista {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .menu-lista li {
+    margin-bottom: 10px;
+    margin-left: -20%;
+    font-size: 1em;
+  }
+  
+  .menu-lista a {
+    text-decoration: none;
+    color: var(--color-roxo-escuro);
+  }
+  
+  .menu-lista a:hover {
+    text-decoration: underline;
+  }
+  
+  media {
+    .conteudo-principal {
+      flex-direction: column; 
+      align-items: center;
+    }
+  
+    .rodape {
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      gap: 30px;
+    }
+  }
