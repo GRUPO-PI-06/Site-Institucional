@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <title>Document</title>
+</head>
+<body>
+    <div class="container">
+        <div class="menu-lateral">
+            <div class="cabecalho"><!-- expandir -->
+                <i class="bi bi-list"></i>
+            </div>
+            <div class="navegacao">
+                <ul>
+                  <li class="item-menu">
+                    <a href="#">
+                        <span class="icon"><i class="bi bi-columns-gap"></i></span>
+                        <span class="txt-link">Dashboard</span>
+                    </a>
+                </li>
+                <li class="item-menu">
+                    <a href="#">
+                        <span class="icon"><i class="bi bi-house"></i></span>
+                        <span class="txt-link">Home</span>
+                    </a>
+                </li>
+                <li class="item-menu">
+                    <a href="#">
+                        <span class="icon"><i class="bi bi-calculator-fill"></i></span>
+                        <span class="txt-link">Simulador</span>
+                    </a>
+                </li>
+                <li class="item-menu">
+                    <a href="#">
+                        <span class="icon"><i class="bi bi-person-circle"></i></span>
+                        <span class="txt-link">Conta</span>
+                    </a>
+                </li>
+                </ul>
+            </div>
+        </div>   <!-- fim do menu-lateral -->
+        <div class="dashboard">
+          <div class="box1">
+            <div class="tittle">
+              <h1>Painel De Controle</h1>
+            </div>
+            <div class="boxSelects">
+              <select id="select_especie" onchange="filtro()"> 
+                  <option value="cattleya">Cattleya</option>
+                  <option value="vanda">Vanda</option>
+                  <option value="phaenopsis">Phaenopsis</option>
+              </select>
+              <select id="aeea">
+                  <option value="">Estufa 1</option>
+                  <option value="">Estufa 2</option>
+                  <option value="">Estufa 3</option>
+                  <option value="">Estufa 4</option>
+              </select>
+          </div>
+            </div>
+            <div class="ContainerDashboard">
+              <div class="ContainerIndicador">
+                  <div class="boxIndicador">Indicador 1</div>
+                  <div class="boxIndicador">Indicador 2</div>
+                  <div class="boxIndicador">Indicador 3</div>
+              </div>
+                <div class="ContainerGraficos">
+                    <div class="boxGraficos">
+                            <canvas id="myChart2"></canvas>
+                    </div>
+                    <div class="boxGraficos">
+                        <canvas id="myChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  
+  <script>
+    
+    const ctx = document.getElementById('myChart');
+    const ctx2 = document.getElementById('myChart2');
+  
+   
+var dataBarra = {//aqui eu crie um objeto onde as propriedades são os tipo de orquideas q existem
+  // e anexei valores aleatorio para depeois fazer uma cadeia de comandos para minha dashboard
+  // exempllo que pensei:
+  // cattleya qtd/qtdLuxOK/qtdLuxAcima e etc.
+  cattleya: [3000, 3500, 3900, 4000, 1900, 3000, 2000],
+  vanda: [2500, 2800, 2600, 2700, 3000, 2900, 3100],
+  phaenopsis: [1800, 2000, 1900, 2200, 2100, 2300, 2400]
+};
+
+var dataPizza = {
+  cattleya: [230, 190],
+  vanda: [150, 250],
+  phaenopsis: [300, 100]
+};
+  
+const barChart =  new Chart(ctx, {
+      type: 'line',
+      data: {
+      labels: ['Segunda-feira', 'Terça-feira', 'Quarta-feira', 'Quinta-feira', 'Sexta-feira', 'Sabado','Domingo'],
+      datasets: [{
+      label: 'Lux',
+      data: [],
+      borderColor: '#6a0dad', 
+      backgroundColor:'#afa1e150',
+      borderWidth: 1,
+      tension: 0.3, 
+      fill: true, 
+        }]
+      },
+      options: {
+        scales: {
+          y: {
+            beginAtZero: true
+          }
+        },
+        plugins: {
+          legend: {
+            position: 'bottom',
+            align: 'center'
+          },
+          title: {
+            display: true,
+            text: 'Intensidade de luz diaria(em lux)',
+            font: {
+              size: 18
+            }
+          }
+        }
+      }
+    });
+const pieChart =  new Chart(ctx2, {
+      type: 'pie',
+      data: {
+        labels: ['Adequadas','Não adequadas'],
+        datasets: [{
+          data: [],
+          backgroundColor: ['#afa1e1','#7a9b76'],
+          borderWidth: 1
+        }]
+      },
+      options: {
+        scales: {
+          y: {
+            beginAtZero: true
+          }
+        },
+        plugins: {
+          legend: {
+            position: 'bottom',
+            align: 'center'
+          },
+          title: {
+            display: true,
+            text: 'Orquídeas adequadas a luz ',
+            font: {
+              size: 18
+            }
+          }
+        }
+      }
+    }); 
+    
+    function filtro(){// funcção filtro ao usuario mudar a opcao no select, graças ao 
+      //onchange é disparada a função.
+      //selectEspecie representa o atual valor das especies no select
+      var selectEspecie = select_especie.value;
+        //barChart é a instancia do objeto do tipo Chart.js, estou acessando a propriedade data.datasets com o indice 0,
+        //acessando os dados e atribuindo o meu objeto dataBarra com o indice que meu usuario escolheu no filtro
+        //após isso utilizo o update para dar um refresh ja com os dados carregados.
+        barChart.data.datasets[0].data = dataBarra[selectEspecie];
+        barChart.update();
+        pieChart.data.datasets[0].data = dataPizza[selectEspecie];
+        pieChart.update();
+    }
+    
+  </script>
