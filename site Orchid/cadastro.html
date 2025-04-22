@@ -16,7 +16,7 @@
                         Para se manter conectado conosco 
                         por favor logue com suas informações 
                     </span>
-                    <button>Entrar</button>
+                    <a href="login.html"><button>Entrar</button></a>
             </div>
             <div class="rightCard">
 
@@ -24,15 +24,24 @@
                     <h1>Criar conta</h1>
                 </div>
                 <form class="formulario">
-                        <input type="text" id="" required placeholder="Nome da empresa">
-                        <input type="text" id="" required placeholder="CNPJ">
-                        <input type="text" id="" required placeholder="E-mail ">
-                        <input type="text" id="" required placeholder="Telefone">
-                        <input type="text" id="" required placeholder="CEP">
-                        <input type="text" id="" required placeholder="Senha">
-                </form>
+                    <input type="text" id="input_nome" required placeholder="Nome da empresa" oninput="validarNome()">
+                    <input type="text" id="input_CNPJ" required placeholder="CNPJ" maxlength="18" oninput="validarCNPJ()">
+                    <input type="text" id="input_email" required placeholder="E-mail" oninput="validarEmail()">
+                    <input type="text" id="input_telefone" required placeholder="Telefone" maxlength="15" oninput="validarTelefone()">
+                    <input type="text" id="input_cep" required placeholder="CEP" maxlength="9" oninput="validarCEP()">
+                    <input type="text" id="input_senha" placeholder="Senha" oninput="validarSenha()" onfocus="mostrarBoxSenha()" onblur="ocultarBoxSenha()">
+                    <div class="containerSenha">
+                        <div id="boxSenha">
+                            <span id="span_maiuscula">Letras maiúsculas(A-Z)</span>
+                            <span id="span_minuscula">Letras minúsculas(a-z)</span>
+                            <span id="span_numero">Números (0-9)</span>
+                            <span id="span_especial">Caracteres especiais(!, @, etc.)</span>
+                            <span id="span_tamanho">Pelo menos 10 caracteres</span>
+                        </div>
+                    </div>
+            </form>
                 <div class="btn">
-                    <button>Registrar-se</button>
+                   <button onclick="validarCadastro()">Registrar-se</button>
                 </div>
 
             </div>
@@ -40,3 +49,208 @@
     </div>
 </body>
 </html>
+<script>
+    function validarNome(){
+        var nome = input_nome.value;
+        if(nome.length>0){
+            if(input_nome.value.length > 0 ){
+             input_nome.style.border = '1px solid green';
+            }else{
+             input_nome.style.border = '1px solid red';
+            }   
+        }else{
+            input_nome.style.border = '1px solid #604da4';
+        }
+    }
+    function validarCNPJ(){
+        var cnpj = input_CNPJ.value.replace(/\D/g, "");
+        var formatandoInput = '';
+        for (var i = 0; i < cnpj.length; i++) {
+            formatandoInput += cnpj[i];
+        if (i == 1 || i == 4) {
+            formatandoInput += ".";
+        } else if (i == 7) {
+            formatandoInput += "/";
+        } else if (i == 11) {
+            formatandoInput += "-";
+        }
+    }
+    input_CNPJ.value = formatandoInput;
+    if(cnpj.length>0){
+        if(input_CNPJ.value.length == 18){
+         input_CNPJ.style.border = '1px solid green';
+        }else{
+         input_CNPJ.style.border = '1px solid red';
+        }   
+    }else{
+        input_CNPJ.style.border = '1px solid #604da4';
+    }
+    }
+    function validarTelefone(){
+        var telefone = input_telefone.value.replace(/\D/g, '');
+        
+        var formatandoInput = '';
+        for (var i = 0; i < telefone.length; i++) {
+            if (i === 0) {
+                formatandoInput += '(' + telefone[i];
+            } else if (i === 1) {
+                formatandoInput += telefone[i] + ') ';
+            } else if (i === 6) {
+                formatandoInput += telefone[i] + '-';
+            } else {
+                formatandoInput += telefone[i];
+            }
+        }
+    input_telefone.value = formatandoInput;
+
+    if(telefone.length>0){
+        if(input_telefone.value.length >= 15){
+            input_telefone.style.border = '1px solid green';
+        }else{
+            input_telefone.style.border = '1px solid red';
+        }
+    }else{
+        input_telefone.style.border = '1px solid #604da4';
+    }
+ 
+    }
+    function validarCEP(){
+        var cep = input_cep.value.replace(/\D/g, '');
+        
+        var formatandoInput = '';
+        for (var i = 0; i < cep.length; i++) {
+            if (i === 5) {
+                formatandoInput += '-' + cep[i];
+            } else {
+                formatandoInput += cep[i];
+            }
+        }
+    input_cep.value = formatandoInput;
+
+    if(cep.length>0){
+        if(input_cep.value.length >= 9){
+            input_cep.style.border = '1px solid green';
+        }else{
+            input_cep.style.border = '1px solid red';
+        }
+    }else{
+        input_cep.style.border = '1px solid #604da4';
+    }
+ 
+    }
+    function validarEmail(){
+        var email = input_email.value;
+        if(email.length>0){
+            if(email.includes('@') && email.endsWith('.com')){
+                input_email.style.border = '1px solid green';
+            }else{
+                input_email.style.border = '1px solid red';
+            }
+        }else{
+            input_email.style.border = '1px solid #604da4';
+        }
+    }
+    function mostrarBoxSenha(){
+        boxSenha.style.display = 'flex';
+        
+    }
+    function ocultarBoxSenha(){
+        boxSenha.style.display = 'none';
+        
+    }
+    function validarSenha(){
+        var senha = input_senha.value;
+        input_senha.value = senha.replaceAll("'",'').replaceAll('=','').replaceAll('-','').replaceAll(';','').replaceAll('"','').replaceAll('#','');
+        var senhaMaiuscula = senha.toUpperCase();
+        var senhaMinuscula = senha.toLowerCase();
+        var senhaExclamacao = senha.includes('!');
+        var senhaArroba = senha.includes('@');
+        var senhaSifrao = senha.includes('$');
+        var senhaPorcetagem = senha.includes('%');
+        var senhaEcomercial = senha.includes('&');
+        var senhaAsteristico = senha.includes('*');
+        var senhaUnderline = senha.includes('_');
+        var senhaNumero = false;
+        var letraMaiuscula = false;
+        var letraMinusculo = false;
+
+        if(senha != senhaMaiuscula){    
+            letraMinusculo = true;
+        }else{
+            letraMinusculo = false;
+        }
+
+        if(senha != senhaMinuscula){    
+            letraMaiuscula = true;
+        }else{
+            letraMaiuscula = false;
+        }
+        if(senha.includes(0)){
+            senhaNumero = true;
+        }else  if(senha.includes(1)){
+            senhaNumero = true;
+        }else  if(senha.includes(2)){
+            senhaNumero = true;
+        }else  if(senha.includes(3)){
+            senhaNumero = true;
+        }else  if(senha.includes(4)){
+            senhaNumero = true;
+        }else  if(senha.includes(5)){
+            senhaNumero = true;
+        }else  if(senha.includes(6)){
+            senhaNumero = true;
+        }else  if(senha.includes(7)){
+            senhaNumero = true;
+        }else  if(senha.includes(8)){
+            senhaNumero = true;
+        }else  if(senha.includes(9)){
+            senhaNumero = true;
+        }else{
+            senhaNumero = false;
+        }
+        if(letraMaiuscula){
+            span_maiuscula.style.color = 'green';
+        }else{
+            span_maiuscula.style.color = 'red';
+        }
+
+        if(letraMinusculo){
+            span_minuscula.style.color = 'green';
+        }else{
+            span_minuscula.style.color = 'red';
+        }
+
+        if(senhaNumero){
+            span_numero.style.color = 'green';
+        }else{
+            span_numero.style.color = 'red';
+        }
+
+        if(senhaArroba || senhaExclamacao || senhaSifrao || senhaPorcetagem || senhaEcomercial || senhaAsteristico || senhaUnderline){
+            span_especial.style.color = 'green';
+        }else{
+            span_especial.style.color = 'red';
+        }
+        if(senha.length>=10){
+            span_tamanho.style.color = 'green';
+        }else{
+            span_tamanho.style.color = 'red';
+        }
+        if(senha.length>0){
+            if(senhaNumero && letraMaiuscula && letraMinusculo &&  (senhaArroba || senhaExclamacao || senhaSifrao || senhaPorcetagem || senhaEcomercial || senhaAsteristico || senhaUnderline)){
+                input_senha.style.border = '1px solid green';
+            }else{
+                input_senha.style.border = '1px solid red';
+            }
+        }else{
+            input_senha.style.border = '1px solid #604da4';
+        }
+    }
+    function validarCadastro(){
+       if(input_senha.style.border =='1px solid green' && input_email.style.border == '1px solid green' &&  input_cep.style.border == '1px solid green' && input_nome.style.border == '1px solid green' && input_CNPJ.style.border == '1px solid green' && input_telefone.style.border =='1px solid green'){
+        window.location.href = 'login.html';
+       }else{
+        alert('Preencha todos os campos corretamente')
+       }
+    }
+</script>    

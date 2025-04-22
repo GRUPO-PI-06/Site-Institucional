@@ -14,7 +14,9 @@
 
 body {
     background-color: #efecf9;
+    
 }
+
 
 .header {
     width: 100%;
@@ -96,7 +98,6 @@ body {
 .container_funcionalidades {
     width: 100%;
     text-align: center;
-    padding: 20px;
 }
 
 .logo {

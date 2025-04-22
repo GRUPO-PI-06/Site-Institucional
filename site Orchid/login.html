@@ -16,11 +16,11 @@
                     <h1>Fazer login</h1>
                 </div>
                 <form class="formulario">
-                    <input type="text" id="" required placeholder="E-mail">
-                    <input type="text" id="" required placeholder="Senha">
+                    <input type="text" id="input_email" required placeholder="E-mail">
+                    <input type="text" id="input_senha" required placeholder="Senha">
                 </form>
                 <div class="btn">
-                    <button>Entrar</button>
+                    <button onclick="validarLogin()">Entrar</button>
                 </div>
             </div>
             <div class="leftCard">
@@ -30,10 +30,26 @@
                     Para se conectar conosco 
                 por favor preencha com suas informações 
                 </span>
-                <button>Registrar-se</button>
+                <a href="cadastro.html"><button>Registrar-se</button></a>
             </div>
         </div>
     </div>
 </body>
 
 </html>
+
+<script>
+    function validarLogin(){
+        var senha = input_senha.value;
+        var email =input_email.value;
+        if(senha == 'Cliente12@' && email == 'cliente@gmail.com'){
+            window.location.href = 'indexv2.html';
+        }else{
+            alert('Usuario não existe em nossa base de dados');
+            input_senha.style.border = '1px solid #604da4';
+            input_email.style.border = '1px solid #604da4';
+            input_senha.value = '';
+            input_email.value = '';
+        }
+    }
+</script>

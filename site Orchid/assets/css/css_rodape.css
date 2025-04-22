@@ -1,6 +1,5 @@
 .rodape {
   background-color: #f1f6ef;
-  padding: 40px 20px;
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
@@ -10,6 +9,8 @@
   color: #614ca6;
   font-size: 14px;
   margin-top: 80px;
+  margin: 0;
+  padding: 0 120px;
  }
 
  .rodape-esquerda {

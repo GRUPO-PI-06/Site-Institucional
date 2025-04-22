@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OrquiTech - Simulador Fianceiro</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    
+    <div class="container">
+        <div class="centralizar">
+            <a href="indexv2.html"> <img src="assets/imgs/flor orchid.png" width="50" height="75"></a>
+            <h1 class="tittle">Simulador Financeiro</h1>
+        </div>
+        <select class="select-style" id="select_orquidea">
+            <option value="Phalaenopsis">Phalaenopsis</option>
+            <option value="Cattleya">Cattleya</option>
+            <option value="Vanda">Vanda</option>
+        </select>
+           <div class="form-group">
+                <div>
+                    <label for="input_plantacao">Tamanho da Plantação(m²):</label>
+                    <input class="input-style" type="text" id="input_plantacao" placeholder="100m²">
+                    <span id="input_erro1" style="color: red;"></span>
+                </div>
+               <div>
+                    <label for="input_qtdOrquidea">Quantidade de Orquideas plantadas(unidade):</label>
+                    <input class="input-style" type="text" id="input_qtdOrquidea" placeholder="Quantidade">
+                    <span id="input_erro2" style="color: red;"></span>
+               </div>
+           </div>
+           <div class="form-group">
+               <div>
+                    <label for="input_gastos">Gastos gerais(R$):</label>
+                    <input class="input-style" type="text" id="input_gastos" placeholder="R$10,00">
+                    <span id="input_erro3" style="color: red;"></span>
+               </div>
+               <div>
+                    <label for="input_venda">Valor de Venda por unidade(R$):</label>
+                    <input class="input-style" type="text" id="input_venda" placeholder="R$20,00">
+                    <span id="input_erro4" style="color: red;"></span>
+               </div>
+           </div>
+            <div class="btn-group">
+                <button class="btnLimpar" onclick="limpar()">Limpar</button>
+                <button class="btnCalcular open" onclick="verificaCampos()">Calcular</button>
+            </div>
+    </div>
+    <div id="modal_container"></div>
+</body>
+</html>
+<script>
+    function fecharModal(){
+        modal_container.innerHTML = `
+        <div class="modal-container">
+      <div class="modal-overlay" onclick="fecharModal()"></div>
+    <div class="modal">
+        <h1>Resultados</h1>
+        <p id="p_resultado"></p>
+        <div class="boxButton">
+            <button class="btnCalcular " onclick="fecharModal()">Fechar</button>
+        </div>
+    </div>
+</div>
+    `
+    }
+    
+    //Verificação de campps
+   function verificaCampos(){
+    var plantacao = Number(input_plantacao.value);
+    var qtdOrquidea = Number(input_qtdOrquidea.value);
+    var gasto = Number(input_gastos.value);
+    var venda = Number(input_venda.value);
+    if(plantacao<=0){
+        input_erro1.innerHTML = "Todos os campos são obrigatórios!";
+        event.preventDefault();
+    }else{
+        input_erro1.innerHTML = "";
+        event.preventDefault();
+    }
+    if(qtdOrquidea<=0){
+        input_erro2.innerHTML = "Todos os campos são obrigatórios!";
+        event.preventDefault();
+    }else{
+        input_erro2.innerHTML = "";
+        event.preventDefault();
+    }
+    if(gasto<=0){
+        input_erro3.innerHTML = "Todos os campos são obrigatórios!";
+        event.preventDefault();
+    }else{
+        input_erro3.innerHTML = "";
+        event.preventDefault();
+    }if(venda <= 0){
+        input_erro4.innerHTML = "Todos os campos são obrigatórios!";
+        event.preventDefault();
+    }else{
+        input_erro4.innerHTML = "";
+        event.preventDefault();
+    }
+    if(plantacao > 0 && qtdOrquidea > 0  && gasto > 0  && venda > 0  ){
+        input_erro1.innerHTML = "";
+        input_erro2.innerHTML = "";
+        input_erro3.innerHTML = "";
+        input_erro4.innerHTML = "";
+        modal_container.innerHTML = `
+            <div class="modal-container show">
+          <div class="modal-overlay" onclick="fecharModal()"></div>
+        <div class="modal">
+            <h1>Resultados</h1>
+            <p id="p_resultado"></p>
+            <div class="boxButton">
+                <button class="btnCalcular " onclick="fecharModal()">Fechar</button>
+            </div>
+        </div>
+    </div>
+        `
+        calcular();
+    }
+   }
+   function limpar(){
+    var plantacao = Number(input_plantacao.value);
+    var qtdOrquidea = Number(input_qtdOrquidea.value);
+    var gasto = Number(input_gastos.value);
+    var venda = Number(input_venda.value);
+
+    input_plantacao.value = "";
+    input_qtdOrquidea.value = "";
+    input_gastos.value = "";
+    input_venda.value = "";
+
+    input_erro1.innerHTML = "";
+    input_erro2.innerHTML = "";
+    input_erro3.innerHTML = "";
+    input_erro4.innerHTML = "";
+    
+   }
+</script>
+<script>
+    var valMC = 105;    
+    var valMV = 250;
+    var valMP = 70;
+    function calcular() {
+        var orquideas = Number(input_qtdOrquidea.value);
+        var orquideasPerdidas = orquideas * 0.12;
+        var gastos = Number(input_gastos.value);
+        var venda = Number(input_venda.value);
+        var tamanho = input_plantacao.value;
+        var tipoOrquidea = select_orquidea.value;
+        var lucroAtual = (orquideas - orquideasPerdidas) * venda - gastos;
+        var lucroProjeto = (orquideas - (orquideas * 0.06)) * venda - gastos;
+        var difLucro = lucroProjeto - lucroAtual
+       
+            p_resultado.innerHTML = `
+  <table border="1" cellpadding="8" cellspacing="0" style="border-collapse: collapse; width: 100%; text-align: left;">
+    <thead>
+      <tr style="background-color: #fff;">
+        <th>Descrição</th>
+        <th>Valor</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr style="background-color: #fff;">
+        <td>Lucro com 12% de perda (por falta de luminosidade)</td>
+        <td><b>R$ ${lucroAtual.toFixed(2)}</b></td>
+      </tr>
+      <tr style="background-color: #fff;">
+        <td>Total de orquídeas plantadas</td>
+        <td><b>${orquideas}</b></td>
+      </tr>
+      <tr style="background-color: #fff;">
+        <td>Lucro com o projeto (reduzindo perdas para 6%)</td>
+        <td><b style="color:green;">R$ ${lucroProjeto.toFixed(2)}</b></td>
+      </tr>
+      <tr style="background-color: #fff;">
+        <td>Diferença de lucro com o projeto</td>
+        <td><b>R$ ${difLucro.toFixed(2)}</b></td>
+      </tr>
+    </tbody>
+  </table>
+        `
+
+            if (tipoOrquidea == "Cattleya") {
+                if (venda > valMC) {
+                    p_resultado.innerHTML += `<br><br><b>Dica:</b> O valor médio de venda é de <b>R$${valMC}</b>, seu produto está acima da média de venda em: <b>R$${venda - valMC}</b>`;
+                } else if (venda < valMC) {
+                    p_resultado.innerHTML += `<br><br><b>Dica:</b> O valor médio de venda é de <b>R$${valMC}</b>, seu produto está abaixo da média de venda em: <b>R$${valMC - venda }</b>`;
+                }
+            } else if (tipoOrquidea == "Vanda") {
+                if (venda > valMV) {
+                    p_resultado.innerHTML += `<br><br><b>Dica:</b> O valor médio de venda é de <b>R$${valMV}</b>, seu produto está acima da média de venda em: <b>R$${venda - valMV}</b>`;
+                } else if (venda < valMV) {
+                    p_resultado.innerHTML += `<br><br><b>Dica:</b> O valor médio de venda é de <b>R$${valMV}</b>, seu produto está abaixo da média de venda em: <b>R$${valMV - venda }</b>`;
+                }
+            } else if (tipoOrquidea == "Phalaenopsis") {
+                if (venda > valMP) {
+                    p_resultado.innerHTML += `<br><br><b>Dica:</b> O valor médio de venda é de <b>R$${valMP}</b>, seu produto está acima da média de venda em: <b>R$${venda - valMP}</b>`;
+                } else if (venda < valMP) {
+                    p_resultado.innerHTML += `<br><br><b>Dica:</b> O valor médio de venda é de <b>R$${valMP}</b>, seu produto está abaixo da média de venda em: <b>R$${valMP - venda }</b>`;
+
+                }
+            }
+        }
+    
+
+
+</script>

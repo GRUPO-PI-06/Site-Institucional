@@ -242,7 +242,7 @@ body {
 
 /*NOSSAS AVALIACOES*/
 .containerPG3{
-    height: 70vh;
+    height: 100vh;
     width: 100%;
     background-color: var(--roxo_claro);
     margin-top: 80px;
