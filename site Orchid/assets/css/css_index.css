@@ -243,7 +243,7 @@ body {
 /*NOSSAS AVALIACOES*/
 .containerPG3{
     height: 70vh;
-    width: 100vw;
+    width: 100%;
     background-color: var(--roxo_claro);
     margin-top: 80px;
 }
@@ -581,7 +581,8 @@ main {
     width: 35px;
     height: 35px;
    }
-  
+
+/*RODAPÉ*/
    .rodape {
     background-color: #f1f6ef;
     padding: 40px 100px;
