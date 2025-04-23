@@ -145,6 +145,10 @@ body {
     transition: background-color 0.3s, color 0.3s, box-shadow 0.3s;
 }
 
+.tela1 button a {
+    text-decoration: none;
+}
+
 .foto_orquidario {
     min-width: 280px;
     text-align: center;
@@ -242,7 +246,7 @@ body {
 
 /*NOSSAS AVALIACOES*/
 .containerPG3{
-    height: 100vh;
+    height: 70vh;
     width: 100%;
     background-color: var(--roxo_claro);
     margin-top: 80px;
@@ -384,6 +388,10 @@ body {
     font-family: Poppins, sans-serif;
     color:#7a9b76;
     cursor: pointer;
+}
+
+.btn-simulador a {
+    text-decoration: none;
 }
 
 .btn-simulador:hover {
