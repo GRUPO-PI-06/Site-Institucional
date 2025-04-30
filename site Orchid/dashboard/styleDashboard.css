@@ -1,0 +1,290 @@
+[data-theme="light"] {
+    --background:#ffffff;
+    --border:#afa1e1;
+    --icons: #614ca6;
+    --text:#614ca6;
+    --bordaGrafico: #614ca6;
+    --grafico-linha: #614ca6;
+    --grafico-fundo:var(--background);
+    --grafico-grade:#1e1e1e;
+    --grafico-titulo:#614ca6;
+    --grafico-ponto:var(--icons);
+}
+
+[data-theme="dark"] {
+    --background: #1e1e1e; /* Um tom um pouco mais quente que o preto puro */
+    --border: #afa1e1;    /* Uma variante mais suave do roxo */
+    --icons: #1e1e1e;     /* Roxo mais claro para maior contraste */
+    --text: #d1c8f0;      /* Um branco com um leve tom de lilás */
+    --bordaGrafico: #ffffff;
+    --grafico-linha:#afa1e1;
+    --grafico-fundo:var(--background);
+    --grafico-grade:#ffffff;
+    --grafico-titulo:#afa1e1;
+    --grafico-ponto:var(--icons);
+}
+
+
+
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+}
+.container{
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.menu-lateral{
+    width: 5%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 3px 0 0 #000;
+    background-color: var(--border);
+    color: var(--icons);
+    /* overflow: hidden;
+    position: fixed;
+    top: 0;
+    left: 0; */
+    transition: 1s;
+    ul li a span.txt-link{
+        opacity: 0;
+    }
+}
+/* .menu-lateral:hover{
+    transition: 2s;
+    width: 15%;
+    .dashboard{
+        width: 85%;
+    }
+    ul li a span.txt-link{
+        opacity: 1;
+    }
+} */
+.menu-lateral .cabecalho{
+    height: 10%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 14px 0 14px;
+}
+.navegacao {
+    height: 100%;
+    width: 100%;
+}
+.navegacao ul{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+}
+.navegacao ul li{
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    list-style: none;
+    border: none;
+    width: 80%;
+    height: 10%;
+    padding: 0 10px;
+
+}
+
+.navegacao ul li a:hover{
+    transition: 1s;
+    color: #fff;
+}
+.dashboard{
+    width: 95%;
+    height: 100%;
+    background-color: var(--background);
+    color: var(--icons);
+}
+.bi{
+    font-size: 2rem;
+}
+
+.box1 {
+    width: 98%;
+    height: 13%;
+    display: flex;
+    flex-direction: row; /* Certifica-se que os itens estão em linha */
+    align-items: center;
+    gap: 10px; /* Espaço entre o título e o botão de alternância */
+    padding: 0 10px;
+}
+
+.tittle{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    padding: 0 10px;
+    color: var(--text);
+}
+
+.themeToggle {
+    color: #afa1e1;
+    width: 3em;
+  }
+  
+  .st-sunMoonThemeToggleBtn {
+    position: relative;
+    cursor: pointer;
+  }
+  
+  .st-sunMoonThemeToggleBtn .themeToggleInput {
+    opacity: 0;
+    width: 100%;
+    aspect-ratio: 1;
+  }
+  
+  .st-sunMoonThemeToggleBtn svg {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.4s ease;
+    transform: rotate(40deg);
+  }
+  
+  .st-sunMoonThemeToggleBtn svg .sunMoon {
+    transform-origin: center center;
+    transition: inherit;
+    transform: scale(1);
+  }
+  
+  .st-sunMoonThemeToggleBtn svg .sunRay {
+    transform-origin: center center;
+    transform: scale(0);
+  }
+  
+  .st-sunMoonThemeToggleBtn svg mask > circle {
+    transition: transform 0.64s cubic-bezier(0.41, 0.64, 0.32, 1.575);
+    transform: translate(0px, 0px);
+  }
+  
+  .st-sunMoonThemeToggleBtn svg .sunRay2 {
+    animation-delay: 0.05s !important;
+  }
+  .st-sunMoonThemeToggleBtn svg .sunRay3 {
+    animation-delay: 0.1s !important;
+  }
+  .st-sunMoonThemeToggleBtn svg .sunRay4 {
+    animation-delay: 0.17s !important;
+  }
+  .st-sunMoonThemeToggleBtn svg .sunRay5 {
+    animation-delay: 0.25s !important;
+  }
+  .st-sunMoonThemeToggleBtn svg .sunRay5 {
+    animation-delay: 0.29s !important;
+  }
+  
+  .st-sunMoonThemeToggleBtn .themeToggleInput:checked + svg {
+    transform: rotate(90deg);
+  }
+  .st-sunMoonThemeToggleBtn .themeToggleInput:checked + svg mask > circle {
+    transform: translate(16px, -3px);
+  }
+  .st-sunMoonThemeToggleBtn .themeToggleInput:checked + svg .sunMoon {
+    transform: scale(0.55);
+  }
+  .st-sunMoonThemeToggleBtn .themeToggleInput:checked + svg .sunRay {
+    animation: showRay1832 0.4s ease 0s 1 forwards;
+  }
+  
+  @keyframes showRay1832 {
+    0% {
+      transform: scale(0);
+    }
+    100% {
+      transform: scale(1);
+    }
+  }  
+
+.ContainerDashboard {
+    height: 80%;
+    display: flex;
+    flex-direction: column;
+}
+ .ContainerIndicador {
+    height: 20%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+.ContainerGraficos{
+    height: 70%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.boxGraficos {
+    width: 63.5%;
+    height: 90%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 8px;
+    box-shadow: 0px 0px 4px 0px var(--bordaGrafico);
+    color: var(--text);
+    background-color: var(--background);
+}
+.boxGraficos1 {
+    width: 30%;
+    height: 90%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 8px;
+    box-shadow: 0px 0px 4px 0px var(--bordaGrafico);
+    color: var(--text);
+    background-color: var(--background);
+}
+
+/* .boxGraficos,
+.boxGraficos1 {
+    background-color: var(--background);
+    width: 30%;
+    height: 90%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 8px;
+    box-shadow: 0px 0px 4px 0px var(--bordaGrafico);
+    color: var(--text);
+} */
+
+.boxIndicador {
+    width: 30%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 8px;
+    box-shadow: 0px 0px 4px 0px var(--bordaGrafico);
+    border: 1px solid var(--border);
+    color: var(--text);
+}
+ul li.item-menu a{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    text-decoration: none;
+    font-size: 1rem;
+    text-align: start;
+    color: var(--icons);
+}
+span{
+    width: 80%;
+}
