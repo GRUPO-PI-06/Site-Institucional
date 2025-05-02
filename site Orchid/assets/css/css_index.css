@@ -19,8 +19,11 @@ body {
 
 .header {
     width: 100%;
+    height: 70px;
     background-color: var(--branco);
     border-bottom: 2px solid var(--roxo);
+    position: fixed;
+    z-index: 10;
 }
 
 .header .container {
@@ -43,13 +46,14 @@ body {
     max-width: 700px;
     width: 100%;
     justify-content: flex-end;
+    padding: 20px;
 }
 
 .navbar a {
     position: relative;
     color: var(--roxo);
     text-decoration: none;
-    font-size: 1,5rem;
+    font-size: 1,9rem;
     transition: color 0.3s, font-weight 0.3s;
     padding-bottom: 5px;
 }
@@ -75,7 +79,7 @@ body {
 .navbar a.cadastro {
     padding: 0.4em 1.8em;
     border: 1px solid var(--roxo);
-    background-color: var(--roxo_claro);
+    background-color: var(--roxo);
     border-radius: 20px;
     color: white;
     font-weight: 500;
@@ -89,8 +93,9 @@ body {
 
 .navbar a.login:hover,
 .navbar a.cadastro:hover {
-    background-color: var(--roxo);
-    color: #fff;
+    background-color: var(--roxo_claro);
+    border-color: var(--roxo);
+    color: var(--roxo);
     box-shadow: 0px 4px 10px rgba(97, 76, 166, 0.4);
 }
 
@@ -98,7 +103,7 @@ body {
 .tela1 {
     background: linear-gradient(to bottom, var(--roxo_claro), var(--branco));
     width: 100%;
-    height: 100%;
+    height: 790px;
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -166,6 +171,7 @@ body {
 /*NOSSAS VANTAGENS*/
 .tela2 {
     width: 100%;
+    height: 580px;
     display: flex;
     justify-content: center;
     margin-top: 5%;
@@ -246,7 +252,7 @@ body {
 
 /*NOSSAS AVALIACOES*/
 .containerPG3{
-    height: 70vh;
+    height: 730px;
     width: 100%;
     background-color: var(--roxo_claro);
     margin-top: 80px;
@@ -331,7 +337,7 @@ body {
     justify-content: space-between;
     align-items: center;
     width: 90%;
-    height: 400px;
+    height: 550px;
     margin-top: 80px;
     margin-left: 5%;
     border-radius: 25px;
@@ -421,6 +427,7 @@ body {
     flex-direction: column;
     align-items: center;
     width: 100%;
+    height: 730px;
     max-width: none; 
     min-width: fit-content;
     justify-self: center;
@@ -484,9 +491,8 @@ main {
     display: flex;
     align-items: center;
     justify-content: center;
-    position: relative;
     width: 100%;
-    height: auto;
+    height: 735px;
     padding: 50px 0;
    }
   
@@ -495,7 +501,7 @@ main {
     padding: 30px;
     border-radius: 2px;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-    z-index: 1;
+    z-index: 0;
     width: 40%;
     height: auto;
     display: flex;
@@ -558,11 +564,10 @@ main {
     padding: 40px 20px;
     border-radius: 2px;
     box-shadow: 0 4px 10px rgba(0,0,0,0.05);
-    z-index: 2;
+    z-index: 0;
     justify-content: space-between;
     font-family: Poppins, sans-serif;
     width: 22.5%;
-    position: absolute;
     right: 9%;
     top: 40%;
     transform: translateY(-50%);
@@ -598,6 +603,7 @@ main {
     justify-content: space-between;
     align-items: flex-start;
     width: 100%;
+    height: 350px;
     box-sizing: border-box;
     font-family: 'Poppins', sans-serif;
     color: var(--roxo);
