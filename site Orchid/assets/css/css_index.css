@@ -569,18 +569,18 @@ main.perguntas_frequentes {
    .brancocard {
     background-color: var(--branco);
     padding: 30px;
-    border-radius: 2px;
+    border-radius: 10px;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
     z-index: 0;
-    width: 40%;
-    height: auto;
+    width: 45%;
+    height: 650px;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
    }
   
    .form-card h1 {
-    font-size: 28px;
+    font-size: 2.5rem;
     color: var(--roxo);
     margin-bottom: 10px;
     font-family: Poppins, sans-serif;
@@ -590,7 +590,7 @@ main.perguntas_frequentes {
    .form-card p {
     color: var(--roxo);
     margin-bottom: 20px;
-    font-size: 20px;
+    font-size: 1.5rem;
     font-family: Poppins, sans-serif;
     width: 100%;
    }
@@ -603,10 +603,10 @@ main.perguntas_frequentes {
    .form-card form textarea {
     width: calc(100% - 20px);
     padding: 10px;
-    margin-bottom: 15px;
+    margin-bottom: 10px;
     border: 2px solid var(--roxo);
     border-radius: 17px;
-    font-size: 16px;
+    font-size: 1rem;
     color: var(--roxo);
     font-family: Poppins, sans-serif;
     box-sizing: border-box;
@@ -617,31 +617,43 @@ main.perguntas_frequentes {
    }
   
    .form-card form button {
-    background-color: var(--roxo_claro);
+    background-color: var(--roxo);
     color: var(--branco);
     border: 2px solid var(--roxo);
     padding: 10px 30px;
-    font-size: 16px;
-    border-radius: 20px;
+    font-size: 1.3rem;
+    border-radius: 30px;
     cursor: pointer;
     font-family: Poppins, sans-serif;
     align-self: flex-start;
-    margin-top: 10px;
+    margin-top: 7px;
+   }
+
+   .form-card form button:hover {
+    background-color: var(--roxo_claro);
+    border-color: var(--roxo);
+    color: var(--roxo);
+    box-shadow: 0px 4px 10px rgba(97, 76, 166, 0.4);
+    }
+
+   .conteudo-principal .cardverde{
+    margin-top: 300px;
+    margin-left: -25px;
    }
   
    .cardverde {
     background-color: #b6d4af;
     padding: 40px 20px;
-    border-radius: 2px;
+    border-radius: 10px;
     box-shadow: 0 4px 10px rgba(0,0,0,0.05);
-    z-index: 0;
+    z-index: 1;
     justify-content: space-between;
     font-family: Poppins, sans-serif;
-    width: 22.5%;
+    width: 27%;
     right: 9%;
     top: 40%;
     transform: translateY(-50%);
-    height: 50%;
+    height: 60%;
    }
   
    .info-card {
@@ -649,7 +661,7 @@ main.perguntas_frequentes {
     flex-direction: column;
     gap: 15px;
     color: #5c3d99;
-    font-size: 15px;
+    font-size: 1.5rem;
     line-height: 1.4;
     font-family: Poppins, sans-serif;
    }
@@ -661,8 +673,8 @@ main.perguntas_frequentes {
    }
   
    .info-card .icon {
-    width: 35px;
-    height: 35px;
+    width: 40px;
+    height: 40px;
    }
 
 /*RODAPÉ*/
