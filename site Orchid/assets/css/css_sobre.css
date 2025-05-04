@@ -15,6 +15,16 @@
    --color-roxo: #d6d0ee;
    --color-roxo-escuro: #614ca6; 
    --font-color-black: #000000; 
+   --verde_claro: #deeada;
+  --verde: #7a9b76;
+  --roxo_claro: #afa1e1;
+  --roxo: #614ca6;
+  --branco: #ffffff;
+  --verde2: #658861;
+  --verde_claro2: #DFF0D8;
+  --cinza_escuro: #444;
+  --roxo2: #5c3d99;
+  --roxo_escuro: #3a1a77;
 }
 
 
@@ -153,7 +163,7 @@
     margin-top: -65%;
 }
 
-#icons img {
+#pilares #icons img {
     width: 70%;
     height: 75%;
 }
@@ -270,7 +280,7 @@
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
   }
   
-  .card-equipe .img {
+  .carousel .card-equipe .img {
     background: var(--color-roxo-escuro);
     height: 260px;
     width: 260px;
@@ -281,7 +291,7 @@
     justify-content: center;
   }
   
-  .card-equipe .img img {
+  .carousel .card-equipe .img img {
     width: 250px;
     height: 250px;
     border-radius: 50%;
@@ -289,14 +299,14 @@
     border: 2px solid white;
   }
   
-  .card-equipe h2 {
+  .carousel .card-equipe h2 {
     font-weight: 700;
     font-size: 2rem;
     margin: 30px 0 10px;
     color: var(--color-roxo-escuro);
   }
   
-  .card-equipe span {
+  .carousel .card-equipe span {
     color: #6A6D78;
     font-size: 1.7rem;
   }
@@ -314,138 +324,239 @@
   }
   
 
- /*FORMULARIO*/
- .conteudo-principal {
-  background-color: var(--color-roxo);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-  width: 100%;
-  height: auto;
-  padding: 50px 0;
- }
-
- .brancocard {
-  background-color: var(--bg-fundo);
-  padding: 30px;
-  border-radius: 2px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-  z-index: 1;
-  width:38%;
-  height: auto;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
- }
-
- .form-card h1 {
-  font-size: 28px;
-  color: var(--color-roxo-escuro);
-  margin-bottom: 10px;
-  font-family: Poppins, sans-serif;
-  width: 100%;
- }
-
- .form-card p {
-  color: var(--color-roxo-escuro);
-  margin-bottom: 20px;
-  font-size: 20px;
-  font-family: Poppins, sans-serif;
-  width: 100%;
- }
-
- .form-card form {
-  width: 98%;
- }
-
- .form-card form input,
- .form-card form textarea {
-  width: calc(100% - 20px);
-  padding: 10px;
-  margin-bottom: 15px;
-  border: 2px solid var(--color-roxo-escuro);
-  border-radius: 17px;
-  font-size: 16px;
-  color: var(--color-roxo-escuro);
-  font-family: Poppins, sans-serif;
-  box-sizing: border-box;
- }
-
- .form-card form textarea {
-  height: 120px;
- }
-
- .form-card form button {
-  background-color: var(--color-roxo);
-  color: var(--bg-fundo);
-  border: 2px solid var(--color-roxo-escuro);
-  padding: 10px 30px;
-  font-size: 16px;
-  border-radius: 20px;
-  cursor: pointer;
-  font-family: Poppins, sans-serif;
-  align-self: flex-start;
-  margin-top: 10px;
- }
-
- .cardverde {
-  background-color: #b6d4af;
-  padding: 40px 20px;
-  border-radius: 2px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
-  z-index: 2;
-  justify-content: space-between;
-  font-family: Poppins, sans-serif;
-  width: 20%;
-  position: absolute;
-  right: 8%;
-  top: 40%;
-  transform: translateY(-50%);
-  height: 40%;
- }
-
- .info-card {
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-  color: #5c3d99;
-  font-size: 15px;
-  line-height: 1.4;
-  font-family: Poppins, sans-serif;
- }
-
- .info-card .item {
-  display: flex;
-  align-items: center;
-  gap: 10px;
- }
-
- .info-card .icon {
-  width: 35px;
-  height: 35px;
- }
-
- @media (max-width: 768px) {
-  .conteudo-principal {
-    flex-direction: column;
+ /*CONTATO*/
+.conteudo-principal {
+    background-color: var(--color-roxo);
+    display: flex;
     align-items: center;
-    padding: 30px 0;
+    justify-content: center;
+    width: 100%;
+    height: 710px;
+    padding: 50px 0;
+   }
+  
+   .brancocard {
+    background-color: var(--branco);
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    z-index: 0;
+    width: 40%;
+    height: 600px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+   }
+  
+   .conteudo-principal .form-card h1 {
+    font-size: 2.5rem;
+    color: var(--roxo);
+    margin-bottom: 10px;
+    font-family: Poppins, sans-serif;
+    width: 100%;
+   }
+  
+   .conteudo-principal .form-card p {
+    color: var(--roxo);
+    margin-bottom: 20px;
+    font-size: 1.5rem;
+    font-family: Poppins, sans-serif;
+    width: 100%;
+   }
+  
+   .conteudo-principal .form-card form {
+    width: 100%;
+   }
+  
+   .conteudo-principal .form-card form input,
+   .conteudo-principal .form-card form textarea {
+    width: calc(100% - 20px);
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 2px solid var(--roxo);
+    border-radius: 17px;
+    font-size: 1rem;
+    color: var(--roxo);
+    font-family: Poppins, sans-serif;
+    box-sizing: border-box;
+   }
+  
+   .conteudo-principal .form-card form textarea {
+    height: 120px;
+   }
+  
+   .conteudo-principal .form-card form button {
+    background-color: var(--roxo);
+    color: var(--branco);
+    border: 2px solid var(--roxo);
+    padding: 10px 30px;
+    font-size: 1.3rem;
+    border-radius: 30px;
+    cursor: pointer;
+    font-family: Poppins, sans-serif;
+    align-self: flex-start;
+    margin-top: 7px;
+   }
+
+   .conteudo-principal .form-card form button:hover {
+    background-color: var(--roxo_claro);
+    border-color: var(--roxo);
+    color: var(--roxo);
+    box-shadow: 0px 4px 10px rgba(97, 76, 166, 0.4);
+    }
+
+   .conteudo-principal .cardverde{
+    margin-top: 380px;
+    margin-left: -25px;
+   }
+  
+   .cardverde {
+    background-color: #b6d4af;
+    padding: 40px 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    z-index: 1;
+    justify-content: space-between;
+    font-family: Poppins, sans-serif;
+    width: 25%;
+    right: 9%;
+    top: 40%;
+    transform: translateY(-50%);
+    height: 50%;
+   }
+  
+   .info-card {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    color: #5c3d99;
+    font-size: 1.5rem;
+    line-height: 1.4;
+    font-family: Poppins, sans-serif;
+   }
+  
+   .info-card .item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+   }
+  
+   .info-card .icon {
+    width: 40px;
+    height: 40px;
+   }
+
+   /*RODAPÉ*/
+.rodape {
+    background-color: #f1f6ef;
+    padding: 60px 80px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    width: 100%;
+    height: 360px;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+    color: var(--roxo2);
+    gap: 80px;
+  }
+  
+  .rodape-esquerda,
+  .rodape-direita {
+    flex: 1 1 300px;
+    display: flex;
+    flex-direction: column;
+    padding-top: 0px;
+  }
+  
+  .logo-info {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 20px;
+  }
+  
+ .logo img {
+    width: 180px ;
     height: auto;
+    max-width: 180px;
+    object-fit: contain;
+    display: block;
   }
-
-  .brancocard {
-    width: 80%;
-    margin-left: auto;
-    margin-right: auto;
+  
+  .contato,
+  .telefones,
+  .endereco {
+    margin: 0;
+    line-height: 1.5;
+    font-size: 1.05rem;
+    color: var(--roxo2);
   }
-
-  .cardverde {
-    position: static;
-    width: 80%;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 30px;
-    transform: translateY(0);
+  
+  .social-icons {
+    display: flex;
+    gap: 14px;
+    margin-top: 20px;
   }
- }
+  
+  .social-icon {
+    width: 32px;
+    height: 32px;
+    transition: transform 0.2s ease, opacity 0.2s ease;
+    opacity: 0.9;
+    object-fit: contain;
+  }
+  
+  .social-icon:hover {
+    transform: scale(1.15);
+    opacity: 1;
+  }
+  
+  .menu-titulo {
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 16px;
+    color: var(--roxo2);
+  }
+  
+  .menu-lista {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  
+  .menu-lista li a {
+    text-decoration: none;
+    color: var(--roxo2);
+    font-size: 1.05rem;
+    transition: all 0.2s ease;
+  }
+  
+  .menu-lista li a:hover {
+    text-decoration: underline;
+    color: var(--roxo2);
+  }
+  
+  /* Responsivo */
+  @media (max-width: 768px) {
+    .rodape {
+        flex-direction: column;
+        align-items: center;
+        padding: 40px 30px;
+        text-align: center;
+        gap: 40px;
+    }
+  
+    .rodape-esquerda,
+    .rodape-direita {
+        align-items: center;
+    }
+  
+    .menu-lista {
+        align-items: center;
+    }
+  }

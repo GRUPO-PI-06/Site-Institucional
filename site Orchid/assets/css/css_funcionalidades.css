@@ -212,3 +212,117 @@
    }
 
 
+/*RODAPÉ*/
+.rodape {
+    background-color: #f1f6ef;
+    padding: 60px 80px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    width: 100%;
+    height: 360px;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+    color: var(--roxo2);
+    gap: 80px;
+  }
+  
+  .rodape-esquerda,
+  .rodape-direita {
+    flex: 1 1 300px;
+    display: flex;
+    flex-direction: column;
+    padding-top: 0px;
+  }
+  
+  .logo-info {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 20px;
+  }
+  
+  .rodape .logo-rodape img {
+    width: 180px;
+    height: auto;
+    max-width: 180px;
+    object-fit: contain;
+    display: block;
+  }
+  
+  .contato,
+  .telefones,
+  .endereco {
+    margin: 0;
+    line-height: 1.5;
+    font-size: 1.05rem;
+    color: var(--roxo2);
+  }
+  
+  .social-icons {
+    display: flex;
+    gap: 14px;
+    margin-top: 20px;
+  }
+  
+  .social-icon {
+    width: 32px;
+    height: 32px;
+    transition: transform 0.2s ease, opacity 0.2s ease;
+    opacity: 0.9;
+    object-fit: contain;
+  }
+  
+  .social-icon:hover {
+    transform: scale(1.15);
+    opacity: 1;
+  }
+  
+  .menu-titulo {
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 16px;
+    color: var(--roxo2);
+  }
+  
+  .menu-lista {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  
+  .menu-lista li a {
+    text-decoration: none;
+    color: var(--roxo2);
+    font-size: 1.05rem;
+    transition: all 0.2s ease;
+  }
+  
+  .menu-lista li a:hover {
+    text-decoration: underline;
+    color: var(--roxo2);
+  }
+  
+  /* Responsivo */
+  @media (max-width: 768px) {
+    .rodape {
+        flex-direction: column;
+        align-items: center;
+        padding: 40px 30px;
+        text-align: center;
+        gap: 40px;
+    }
+  
+    .rodape-esquerda,
+    .rodape-direita {
+        align-items: center;
+    }
+  
+    .menu-lista {
+        align-items: center;
+    }
+  }
