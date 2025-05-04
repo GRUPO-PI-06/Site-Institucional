@@ -4,26 +4,33 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="assets/css/css_cadastro.css">
+    <link rel="stylesheet" href="assets/css/css_navbar.css">
     <title>Document</title>
 </head>
 <body>
+     <!--MENU-->
+     <div class="header">
+        <div class="container">
+            <img src="assets/imgs/logo sem fundo.png" alt="logo orchid">
+            <ul class="navbar">
+                <li><a href="index.html">Início</a></li>
+                <li><a href="sobre.html">Sobre</a></li>
+                <li><a href="funcionalidades.html">Funcionalidades</a></li>
+                <li> <a href="#secao1">Contato</a></li>
+                <li><a class="login" href="login.html">Login</a></li>
+                <li><a class="cadastro" href="cadastro.html">Cadastro</a></li>
+            </ul>
+        </div>
+    </div>
+
     <div class="containerCadastro">
         <div class="boxCadastro">
-            <div class="leftCard">
-                    <img src="assets/imgs/logo sem fundo.png" alt="Logo">
-                    <h1>Bem-Vindo!</h1>
-                    <span>
-                        Para se manter conectado conosco, 
-                        por favor, conecte-se com suas informações. 
-                    </span>
-                    <a href="login.html"><button>Entrar</button></a>
-            </div>
             <div class="rightCard">
-
                 <div class="tittleCadastro">
                     <h1>Criar conta</h1>
                 </div>
                 <form class="formulario">
+                    <input type="text" id="input_codigo" required placeholder="Codigo de validação">
                     <input type="text" id="input_nome" required placeholder="Nome da empresa" oninput="validarNome()">
                     <input type="text" id="input_CNPJ" required placeholder="CNPJ" maxlength="18" oninput="validarCNPJ()">
                     <input type="text" id="input_email" required placeholder="E-mail" oninput="validarEmail()">
