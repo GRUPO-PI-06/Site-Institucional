@@ -167,15 +167,15 @@
 }
 
 #historia h2 {
-    font-size: 33px;
-    padding: 30px 0 0 65px;
+    font-size: 3rem;
+    padding: 70px 0 0 65px;
     font-weight: 900;
 }
 
 #historia p {
     width: 90%;
-    font-size: 20px;
-    padding: 10px 0 0 65px;
+    font-size: 1.7rem;
+    padding: 60px 0 0 65px;
 }
 
 #historia span {
