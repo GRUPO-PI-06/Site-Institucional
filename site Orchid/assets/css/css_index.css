@@ -474,8 +474,7 @@ main.perguntas_frequentes {
     font-weight: 600;
 }
 
-
-/*FORMULARIO*/
+/*CONTATO*/
 .conteudo-principal {
     background-color: var(--roxo_claro);
     display: flex;
@@ -499,7 +498,7 @@ main.perguntas_frequentes {
     align-items: flex-start;
    }
   
-   .form-card h1 {
+   .conteudo-principal .form-card h1 {
     font-size: 2.5rem;
     color: var(--roxo);
     margin-bottom: 10px;
@@ -507,7 +506,7 @@ main.perguntas_frequentes {
     width: 100%;
    }
   
-   .form-card p {
+   .conteudo-principal .form-card p {
     color: var(--roxo);
     margin-bottom: 20px;
     font-size: 1.5rem;
@@ -515,12 +514,12 @@ main.perguntas_frequentes {
     width: 100%;
    }
   
-   .form-card form {
+   .conteudo-principal .form-card form {
     width: 100%;
    }
   
-   .form-card form input,
-   .form-card form textarea {
+   .conteudo-principal .form-card form input,
+   .conteudo-principal .form-card form textarea {
     width: calc(100% - 20px);
     padding: 10px;
     margin-bottom: 10px;
@@ -532,11 +531,11 @@ main.perguntas_frequentes {
     box-sizing: border-box;
    }
   
-   .form-card form textarea {
+   .conteudo-principal .form-card form textarea {
     height: 120px;
    }
   
-   .form-card form button {
+   .conteudo-principal .form-card form button {
     background-color: var(--roxo);
     color: var(--branco);
     border: 2px solid var(--roxo);
@@ -549,7 +548,7 @@ main.perguntas_frequentes {
     margin-top: 7px;
    }
 
-   .form-card form button:hover {
+   .conteudo-principal .form-card form button:hover {
     background-color: var(--roxo_claro);
     border-color: var(--roxo);
     color: var(--roxo);
