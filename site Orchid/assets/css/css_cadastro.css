@@ -1,110 +1,97 @@
-*{
+:root {
+    --verde_claro: #deeada;
+    --verde: #7a9b76;
+    --roxo_claro: #d6d0ee;
+    --roxo: #614ca6;
+    --branco: #ffffff;
+    --verde2: #658861;
+    --verde_claro2: #DFF0D8;
+    --cinza_escuro: #444;
+    --roxo2: #5c3d99;
+    --roxo_escuro: #3a1a77;
+
+}
+
+* {
     margin: 0;
     padding: 0;
     font-family: Arial, Helvetica, sans-serif;
 }
-.containerCadastro{
+
+.containerCadastro {
     width: 100vw;
-    height: 100vh;
+    height: 710px;
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: #afa2dd;
+    background-color: var(--roxo_claro);
+    margin-top: 70px;
 }
-.boxCadastro{
-    width: 80%;
+
+.boxCadastro {
+    width: 45%;
     height: 80%;
     border-radius: 20px;
     display: flex;
     background-color: #fff;
 }
-.rightCard{
-    border: 2px solid #604da4;
-    width: 70%;
-    height: 100%;
-    border-radius: 0 20px 20px 0;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    align-items: center;
 
-}
-.leftCard{
-    background-color: #b9d2b1;
-    border: 2px solid #7a9b76;
-    width: 30%;
+.rightCard {
+    border: 2px solid #604da4;
+    width: 100%;
     height: 100%;
-    border-radius: 20px 0 0 20px;
+    border-radius: 20px;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
 }
-.leftCard span{
-    text-align: center;
-    font-size: 1.4rem;
-    width: 90%;
+
+.rightCard h1{
+    font-size: 3rem;
 }
-.leftCard h1{
-    text-align: center;
-    color: #604da4;
-    font-size: 2.5rem;
-}
-.leftCard a{
-    text-align: center;
-    border: none;
-    background-color: #604da4;
-    width: 70%;
-    height: 40px;
-    border-radius: 30px;
-    cursor: pointer;
-    button{
-        background-color: transparent;
-        text-align: center;
-        border: none;
-        width: 100%;
-        height: 100%;
-        font-weight: bolder;
-        color: #fff;
-        font-size: 1rem;
-    }
-}
-.leftCard img{
-    width: 60%;
-    height: 15%;
-}
-.formulario{
+
+.formulario {
     width: 100%;
-    height: 80%;    
+    height: 90%;
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
     align-items: center;
 }
-.formulario input{
+
+.formulario input {
     width: 80%;
-    height: 20px;    
+    height: 25px;
     border: 1px solid #604da4;
-    border-radius: 20px;
+    border-radius: 30px;
     padding: 10px;
 }
+
 .formulario input::placeholder {
     color: #604da4;
-  }
-.rightCard button{
+    font-size: 1.1rem;
+}
+
+.rightCard button {
     text-align: center;
-    border: 1px solid #7a9b76;
+    border: 1px solid var(--verde);
     background-color: #b9d2b1;
     width: 30%;
     height: 40px;
     border-radius: 30px;
     cursor: pointer;
-        text-align: center;
-        font-size: 1rem;
-        font-weight: bolder;
-        color: #000;
+    text-align: center;
+    font-size: 1rem;
+    font-weight: bolder;
+    color: #000;
 }
-.tittleCadastro{
+
+.rightCard button:hover{
+    box-shadow: 0px 4px 10px #65886166
+}
+
+.tittleCadastro {
     padding: 20px;
     width: 100%;
     color: #604da4;
@@ -112,10 +99,12 @@
     justify-content: center;
     align-items: center;
 }
-.tittleCadastro h1{
+
+.tittleCadastro h1 {
     font-weight: 800;
 }
-.btn{
+
+.btn {
     padding: 20px;
     width: 100%;
     height: 10%;
@@ -123,10 +112,12 @@
     justify-content: center;
     align-items: center;
 }
-.containerSenha{
+
+.containerSenha {
     position: relative;
 }
-#boxSenha{
+
+#boxSenha {
     height: 120px;
     background-color: #fff;
     position: absolute;
@@ -138,8 +129,9 @@
     display: none;
     justify-content: center;
     flex-direction: column;
-    padding:  1rem;
+    padding: 1rem;
 }
+
 .cardSenha span {
     font-size: 1rem;
 }
