@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="assets/css/css_navbar_copy.css">
+    <link rel="stylesheet" href="assets/css/css_cadastro_copy.css">
+    <title>Document</title>
+</head>
+<body>
+     <!--MENU-->
+     <div class="header">
+        <div class="container">
+            <img src="assets/imgs/logo sem fundo.png" alt="logo orchid">
+            <ul class="navbar">
+                <li><a href="index.html">Início</a></li>
+                <li><a href="sobre.html">Sobre</a></li>
+                <li><a href="funcionalidades.html">Funcionalidades</a></li>
+                <li> <a href="#secao1">Contato</a></li>
+                <li><a class="login" href="login.html">Login</a></li>
+                <li><a class="cadastro" href="cadastro.html">Cadastro</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="containerCadastro">
+        <div class="boxCadastro">
+            <div class="rightCard">
+                <div class="tittleCadastro">
+                    <h1>Criar conta</h1>
+                </div>
+                <form class="formulario">
+                    <!-- <input type="text" id="input_codigo" placeholder="Codigo de validação"> -->
+                    <input type="text" id="input_nome" placeholder="Nome do representante" oninput="validarNome()">
+                    <input type="text" id="input_email" placeholder="E-mail" oninput="validarEmail()">
+                    <input type="text" id="input_telefone" placeholder="Telefone" maxlength="15" oninput="validarTelefone()">
+                    <input type="text" id="input_senha" placeholder="Senha" oninput="validarSenha()" onfocus="mostrarBoxSenha()" onblur="ocultarBoxSenha()">
+                    <div class="containerSenha">
+                        <div id="boxSenha">
+                            <span id="span_maiuscula">Letras maiúsculas(A-Z)</span>
+                            <span id="span_minuscula">Letras minúsculas(a-z)</span>
+                            <span id="span_numero">Números (0-9)</span>
+                            <span id="span_especial">Caracteres especiais(!, @, etc.)</span>
+                            <span id="span_tamanho">Pelo menos 10 caracteres</span>
+                        </div>
+                    </div>
+            </form>
+                <div class="box_btn">
+                   <button onclick="validarCadastro()">Registrar-se</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+<script src="assets/js/usuario.js"></script>
+<script>
+    function validarNome(){
+        var nome = input_nome.value;
+        if(nome.length>0){
+            if(input_nome.value.length > 0 ){
+             input_nome.style.border = '1px solid green';
+            }else{
+             input_nome.style.border = '1px solid red';
+            }   
+        }else{
+            input_nome.style.border = '1px solid #604da4';
+        }
+    }
+    function validarTelefone(){
+        var telefone = input_telefone.value.replace(/\D/g, '');
+        
+        var formatandoInput = '';
+        for (var i = 0; i < telefone.length; i++) {
+            if (i === 0) {
+                formatandoInput += '(' + telefone[i];
+            } else if (i === 1) {
+                formatandoInput += telefone[i] + ') ';
+            } else if (i === 6) {
+                formatandoInput += telefone[i] + '-';
+            } else {
+                formatandoInput += telefone[i];
+            }
+        }
+    input_telefone.value = formatandoInput;
+
+    if(telefone.length>0){
+        if(input_telefone.value.length >= 15){
+            input_telefone.style.border = '1px solid green';
+        }else{
+            input_telefone.style.border = '1px solid red';
+        }
+    }else{
+        input_telefone.style.border = '1px solid #604da4';
+    }
+ 
+    }
+    function validarEmail(){
+        var email = input_email.value;
+        if(email.length>0){
+            if(email.includes('@') && email.endsWith('.com')){
+                input_email.style.border = '1px solid green';
+            }else{
+                input_email.style.border = '1px solid red';
+            }
+        }else{
+            input_email.style.border = '1px solid #604da4';
+        }
+    }
+    function mostrarBoxSenha(){
+        boxSenha.style.display = 'flex';
+        
+    }
+    function ocultarBoxSenha(){
+        boxSenha.style.display = 'none';
+        
+    }
+    function validarSenha(){
+        var senha = input_senha.value;
+        input_senha.value = senha.replaceAll("'",'').replaceAll('=','').replaceAll('-','').replaceAll(';','').replaceAll('"','').replaceAll('#','');
+        var senhaMaiuscula = senha.toUpperCase();
+        var senhaMinuscula = senha.toLowerCase();
+        var senhaExclamacao = senha.includes('!');
+        var senhaArroba = senha.includes('@');
+        var senhaSifrao = senha.includes('$');
+        var senhaPorcetagem = senha.includes('%');
+        var senhaEcomercial = senha.includes('&');
+        var senhaAsteristico = senha.includes('*');
+        var senhaUnderline = senha.includes('_');
+        var senhaNumero = false;
+        var letraMaiuscula = false;
+        var letraMinusculo = false;
+
+        if(senha != senhaMaiuscula){    
+            letraMinusculo = true;
+        }else{
+            letraMinusculo = false;
+        }
+
+        if(senha != senhaMinuscula){    
+            letraMaiuscula = true;
+        }else{
+            letraMaiuscula = false;
+        }
+        if(senha.includes(0)){
+            senhaNumero = true;
+        }else  if(senha.includes(1)){
+            senhaNumero = true;
+        }else  if(senha.includes(2)){
+            senhaNumero = true;
+        }else  if(senha.includes(3)){
+            senhaNumero = true;
+        }else  if(senha.includes(4)){
+            senhaNumero = true;
+        }else  if(senha.includes(5)){
+            senhaNumero = true;
+        }else  if(senha.includes(6)){
+            senhaNumero = true;
+        }else  if(senha.includes(7)){
+            senhaNumero = true;
+        }else  if(senha.includes(8)){
+            senhaNumero = true;
+        }else  if(senha.includes(9)){
+            senhaNumero = true;
+        }else{
+            senhaNumero = false;
+        }
+        if(letraMaiuscula){
+            span_maiuscula.style.color = 'green';
+        }else{
+            span_maiuscula.style.color = 'red';
+        }
+
+        if(letraMinusculo){
+            span_minuscula.style.color = 'green';
+        }else{
+            span_minuscula.style.color = 'red';
+        }
+
+        if(senhaNumero){
+            span_numero.style.color = 'green';
+        }else{
+            span_numero.style.color = 'red';
+        }
+
+        if(senhaArroba || senhaExclamacao || senhaSifrao || senhaPorcetagem || senhaEcomercial || senhaAsteristico || senhaUnderline){
+            span_especial.style.color = 'green';
+        }else{
+            span_especial.style.color = 'red';
+        }
+        if(senha.length>=10){
+            span_tamanho.style.color = 'green';
+        }else{
+            span_tamanho.style.color = 'red';
+        }
+        if(senha.length>0){
+            if(senhaNumero && letraMaiuscula && letraMinusculo &&  (senhaArroba || senhaExclamacao || senhaSifrao || senhaPorcetagem || senhaEcomercial || senhaAsteristico || senhaUnderline)){
+                input_senha.style.border = '1px solid green';
+            }else{
+                input_senha.style.border = '1px solid red';
+            }
+        }else{
+            input_senha.style.border = '1px solid #604da4';
+        }
+    }
+    function validarCadastro(){
+       if(input_senha.style.border =='1px solid green' && input_email.style.border == '1px solid green'  && input_nome.style.border == '1px solid green' && input_telefone.style.border =='1px solid green'){
+            cadastrar();
+       }else{
+            alert('Preencha todos os campos corretamente');
+       }
+    }
+</script>    

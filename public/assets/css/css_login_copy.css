@@ -1,0 +1,215 @@
+:root {
+    --branco: #fff;
+    --branco_roxinho: #F4EFFA;
+    --roxo_escuro: #2F184B;
+    --roxo_médio: #532B88;
+    --roxo_médio_claro: #9B72CF;
+    --roxo_claro: #C8B1E4;
+    --roxo_claro2: #ae9ac7;
+    --preto: #000;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.containerLogin {
+    margin-top: 30px;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--branco_roxinho);
+}
+
+.boxLogin {
+    margin-top: 0.5%;
+    width: 75%;
+    height: 80%;
+    border-radius: 20px;
+    display: flex;
+    background-color: var(--branco);
+}
+
+.rightCard {
+    border: 3px solid var(--roxo_escuro);
+    width: 70%;
+    height: 100%;
+    border-radius: 20px 0 0 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+
+}
+.leftCard {
+    background-color: var(--roxo_escuro);
+    border: 2px solid var(--roxo_escuro);
+    width: 30%;
+    height: 100%;
+    border-radius: 0 20px 20px 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.leftCard span {
+    text-align: center;
+    width: 95%;
+    color: var(--branco);
+    font-size: 1.5rem;
+}
+
+.leftCard h1 {
+    text-align: center;
+    color: var(--branco);
+    font-size: 2.5rem;
+    font-weight: 800;
+}
+
+.leftCard a {
+    text-align: center;
+    border: 1px solid var(--branco);
+    background-color: var(--roxo_médio_claro);
+    width: 70%;
+    height: 8%;
+    border-radius: 30px;
+    margin-top: 7%;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+    .leftCard a :hover{
+        border: 1px solid var(--branco);
+        background-color: var(--roxo_claro2);
+        border-radius: 30px;
+    }
+
+    button {
+        background-color: transparent;
+        text-align: center;
+        border: none;
+        width: 100%;
+        height: 100%;
+        font-size: 1.3rem;
+        font-weight: bolder;
+        color: var(--branco);
+    }
+
+    .formulario {
+        width: 100%;
+        height: 50%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    
+    .formulario input {
+        width: 85%;
+        height: 25px; /* Ajuste a altura conforme necessário */
+        border: 1px solid var(--roxo_escuro);
+        border-radius: 30px;
+        padding: 10px;
+        justify-content: center;
+        align-items: center;
+        margin-left: 6%;
+        margin-bottom: 4%;
+    }
+    
+    .formulario input::placeholder {
+        color: var(--roxo_escuro);
+        font-size: 1.3rem;
+        align-items: center;
+    }
+    
+    /* Estilo para os botões dentro do formulário */
+    .formulario button {
+        width: 85%; /* Largura do botão no formulário */
+        height: 50px; /* Altura do botão */
+        padding: 10px;
+        border: none; /* Remove bordas */
+        border-radius: 10px; /* Bordas arredondadas */
+        background-color: var(--roxo_claro2); /* Cor de fundo */
+        color: var(--branco); /* Cor do texto */
+        font-size: 1rem;
+        font-weight: bold;
+        cursor: pointer;
+        margin-top: 20px; /* Espaçamento acima do botão */
+    }
+    
+    .formulario button:hover {
+        background-color: var(--roxo_escuro); /* Cor de fundo ao passar o mouse */
+    }
+
+.rightCard button {
+    text-align: center;
+    border: 1px solid var(--roxo_escuro);
+    background-color: var(--roxo_escuro);
+    font-size: 1.3rem;
+    font-weight: bolder;
+    color: var(--branco);
+    width: 30%;
+    height: 50px;
+    border-radius: 30px;
+    cursor: pointer;
+}
+
+.rightCard button:hover {
+    background-color: var(--roxo_claro);
+    color: var(--roxo_escuro);
+    border: 1px solid var(--roxo_escuro);
+    transition: 0.3s;
+}
+
+.tittleLogin {
+    font-size: 2.5rem;
+    margin-top: 2%;
+    margin-bottom: 2%;
+}
+
+.tittleLogin h1 {
+    color: var(--roxo_escuro);
+    font-size: 2.5rem;
+    font-weight: 800;
+}
+
+.tittleInput{
+    padding: 5px 0 0 140px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    margin-bottom: 1%;
+}
+
+.tittleInput h1 {
+    color: var(--roxo_escuro);
+    font-size: 1.3rem;
+    font-weight: 800;
+}
+
+.rightCard button {
+    width: 60%; /* Faz com que os botões ocupem o mesmo espaço */
+    height: 45px; /* Altura dos botões */
+    border: none; /* Remove bordas */
+    border-radius: 30px; /* Bordas arredondadas */
+    background-color: var(--roxo_escuro); /* Cor de fundo */
+    color: var(--branco); /* Cor do texto */
+    font-size: 1.1rem; /* Tamanho da fonte */
+    font-weight: 600; /* Texto em seminegrito */
+    cursor: pointer; /* Cursor de ponteiro ao passar o mouse */
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2); /* Sombra para destacar os botões */
+    transition: all 0.3s ease; /* Transição suave para hover */
+    margin: 0 80px 0 80px; /* Espaçamento lateral entre os botões */
+    padding: 10px; /* Espaçamento interno */
+}
+
+.rightCard button:hover {
+    background-color: var(--roxo_claro); /* Cor ao passar o mouse */
+    transform: scale(1.05); /* Aumenta levemente o botão ao passar o mouse */
+    box-shadow: 0px 6px 8px rgba(0, 0, 0, 0.3); /* Sombra mais intensa no hover */
+}
