@@ -1,0 +1,151 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #f4f6fa;
+}
+
+.container-dashboard {
+    display: flex;
+    height: 100vh;
+}
+
+.barra-lateral {
+    background: #222e3c;
+    color: #ffffff;
+    width: 60px;
+    transition: width 0.3s;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 20px;
+    position: relative;
+}
+
+.barra-lateral.expandida {
+    width: 200px;
+}
+
+.btn-expandir {
+    background: none;
+    border: none;
+    color: #ffffff;
+    font-size: 1.5em;
+    margin-bottom: 30px;
+    cursor: pointer;
+}
+
+.navbar {
+    width: 100%;
+}
+
+.nav-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 15px 20px;
+    color: #ffffff;
+    text-decoration: none;
+    transition: background 0.2s;
+}
+
+.nav-item span {
+    display: none;
+}
+
+.barra-lateral.expandida .nav-item span {
+    display: inline;
+}
+
+.nav-item.selecionado, .nav-item:hover {
+    background: #1a2230;
+}
+
+.principal {
+    flex: 1;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    align-items: stretch;
+}
+
+.grade-dashboard {
+    display: flex;
+    flex-direction: row;
+    gap: 30px;
+    width: 100%;
+}
+
+.coluna-graficos {
+    flex: 2;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.coluna-kpis {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.grafico-linha,
+.grafico-pizza {
+    background: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    min-height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    height: 220px;
+}
+
+.kpi {
+    background: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    padding: 20px;
+    text-align: center;
+    font-weight: bold;
+}
+
+.barra-legenda {
+    margin-top: 30px;
+    background: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+    padding: 18px 0;
+    width: 100%;
+}
+
+.item-legenda {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 1.1em;
+    font-weight: 500;
+}
+
+.cor-legenda {
+    display: inline-block;
+    width: 22px;
+    height: 22px;
+    border-radius: 4px;
+}
+
+.cor-legenda.critica {
+    background: #e74c3c;
+}
+.cor-legenda.moderada {
+    background: #f1c40f;
+}
+.cor-legenda.otima {
+    background: #27ae60;
+}

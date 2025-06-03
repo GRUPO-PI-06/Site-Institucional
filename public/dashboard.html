@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard | Orchid</title>
+    <link rel="stylesheet" href="dashboard.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+    <div class="container-dashboard">
+        <aside class="barra-lateral">
+            <button class="btn-expandir"><i class="fas fa-bars"></i></button>
+            <nav class="navbar">
+                <a href="#" class="nav-item selecionado">
+                    <i class="fas fa-chart-line"></i> <span>Dashboard</span>
+                </a>
+                <a href="#" class="nav-item">
+                    <i class="fas fa-file-alt"></i> <span>Formulário</span>
+                </a>
+            </nav>
+        </aside>
+        <main class="principal">
+            <div class="grade-dashboard">
+                <div class="coluna-graficos">
+                    <div class="grafico-linha">Gráfico de Linha</div>
+                    <div class="grafico-pizza">Gráfico de Pizza</div>
+                </div>
+                <div class="coluna-kpis">
+                    <div class="kpi">KPI 1</div>
+                    <div class="kpi">KPI 2</div>
+                    <div class="kpi">KPI 3</div>
+                    <div class="kpi">KPI 4</div>
+                    <div class="kpi">KPI 5</div>
+                </div>
+            </div>
+            <div class="barra-legenda">
+                <span class="item-legenda">
+                    <span class="cor-legenda critica"></span> Crítico
+                </span>
+                <span class="item-legenda">
+                    <span class="cor-legenda moderada"></span> Moderado
+                </span>
+                <span class="item-legenda">
+                    <span class="cor-legenda otima"></span> Ótimo
+                </span>
+            </div>
+        </main>
+    </div>
+    
+</body>
+</html>
+<script>
+    const sidebar = document.querySelector('.barra-lateral');
+    const btn = document.querySelector('.btn-expandir');
+    btn.onclick = () => sidebar.classList.toggle('expandida');
+</script>
