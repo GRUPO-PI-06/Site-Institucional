@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="assets/css/css_escolha_login.css">
+    <title>Document</title>
+</head>
+<body>
+    <main class="container">
+        <div class="boxPrincipal">
+            <div class="tittle">
+                <h1>Escolha seu tipo de serviço</h1>
+                <span>Selecione a opção desejada</span>
+            </div>
+            <div class="box_escolha">
+                <div class="funcionario">
+                    <img src="assets/imgs/funcionario.png" alt="Funcionario" onclick="loginFuncionario()">
+                    <h3>Funcionario</h3>
+                </div>
+                <div class="empresa">
+                    <img src="assets/imgs/empresa.png" alt="Empresa" onclick="loginEmpresa()">
+                     <h3>Empresa</h3>
+                </div>
+            </div>
+            <div class="cadastro">
+                <span>Ainda não é cadastrado? <a href="escolhaCadastro.html">Cadastre-se</a></span>
+            </div>
+        </div>
+    </main>
+</body>
+</html>
+<script>
+   function loginFuncionario(){
+        window.location.href = `login_funcionario.html`;
+    }
+    function loginEmpresa(){
+        window.location.href = `login_empresa.html`;
+    }
+</script>
