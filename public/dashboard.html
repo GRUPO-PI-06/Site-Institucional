@@ -4,20 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard | Orchid</title>
-    <link rel="stylesheet" href="dashboard.css">
+    <link rel="stylesheet" href="assets/css/dashboard.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 <body>
     <div class="container-dashboard">
         <aside class="barra-lateral">
             <button class="btn-expandir"><i class="fas fa-bars"></i></button>
-            <nav class="navbar">
-                <a href="#" class="nav-item selecionado">
-                    <i class="fas fa-chart-line"></i> <span>Dashboard</span>
-                </a>
-                <a href="#" class="nav-item">
-                    <i class="fas fa-file-alt"></i> <span>Formulário</span>
-                </a>
+            <nav class="navbar" id="nav_bar">
             </nav>
         </aside>
         <main class="principal">
@@ -51,7 +45,40 @@
 </body>
 </html>
 <script>
+    window.onload = () =>{
+        verificaFuncao();
+    }
     const sidebar = document.querySelector('.barra-lateral');
     const btn = document.querySelector('.btn-expandir');
     btn.onclick = () => sidebar.classList.toggle('expandida');
+    
+    function verificaFuncao(){
+        if(sessionStorage.FUNCAO = 'Empresa'){
+            nav_bar.innerHTML = 
+            `
+                <a href="#" class="nav-item selecionado">
+                    <i class="fas fa-chart-line"></i> <span>Dashboard</span>
+                </a>
+                <a href="#" class="nav-item">
+                    <i class="fas fa-file-alt"></i> <span>Estufas</span>
+                </a>
+                <a href="formulario_especie.html" class="nav-item">
+                    <i class="fas fa-file-alt"></i> <span>Espécies de orquideas</span>
+                </a>
+                <a href="#" class="nav-item">
+                    <i class="fas fa-chart-line"></i> <span>Sair</span>
+                </a>
+            `;
+        }else{
+            nav_bar.innerHTML = 
+            `
+                <a href="#" class="nav-item selecionado">
+                    <i class="fas fa-chart-line"></i> <span>Dashboard</span>
+                </a>
+                <a href="#" class="nav-item selecionado">
+                    <i class="fas fa-chart-line"></i><span>Sair</span>
+                </a>
+            `;
+        }
+    }
 </script>

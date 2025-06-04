@@ -1,0 +1,228 @@
+*{
+    font-family: Arial, Helvetica, sans-serif;
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.container {
+    display: flex;
+    height: 100vh;
+    width: 100vw;
+}
+
+.barra-lateral {
+    background: #222e3c;
+    color: #ffffff;
+    width: 60px;
+    transition: width 0.3s;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 20px;
+    position: relative;
+}
+
+.barra-lateral.expandida {
+    width: 200px;
+}
+
+.btn-expandir {
+    background: none;
+    border: none;
+    color: #ffffff;
+    font-size: 1.5em;
+    margin-bottom: 30px;
+    cursor: pointer;
+}
+
+.navbar {
+    width: 100%;
+}
+
+.nav-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 15px 20px;
+    color: #ffffff;
+    text-decoration: none;
+    transition: background 0.2s;
+}
+
+.nav-item span {
+    display: none;
+}
+
+.barra-lateral.expandida .nav-item span {
+    display: inline;
+}
+
+.nav-item.selecionado, .nav-item:hover {
+    background: #1a2230;
+}
+
+.boxConteudo{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: aqua;
+    flex-direction: column;
+}
+.icone_adicionar{
+    width: 100%;
+    display: flex;
+    justify-content: end;
+    align-items: end;
+    font-size: 3rem;
+}
+.icone_adicionar  i{
+    transition: 1s;
+   cursor: pointer;
+}
+.icone_adicionar i:hover{
+    transition: 1s;
+    color: #afa1e1;
+
+}
+.icone_adicionar span{
+    font-size: 12px;
+}
+.center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+.tittle{
+    width: 80%;
+    display: flex;
+    justify-content: start;
+    align-items: start;
+    flex-direction: column;
+}
+table {
+      width: 80%;
+      margin: 0 auto;
+      border-collapse: collapse;
+      background-color: #fff;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      border-radius: 8px;
+      overflow: hidden;
+    }
+    thead {
+      background-color: #007BFF;
+      color: white;
+    }
+    th, td {
+      padding: 12px 16px;
+      text-align: center;
+}
+
+.modal-container{
+position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  display: none;
+  justify-content: center;
+  align-items: center;
+}
+.modal-overlay {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    top: 0;
+    left: 0;
+    z-index: 1;
+  }
+.modal {
+    position: relative;
+    overflow-y: auto;
+    background: white;
+    padding: 2rem;
+    border-radius: 10px;
+    z-index: 2;
+    max-width: 70%;
+    height: 90%;
+  }
+p{
+    margin: 30px 0;
+}
+.modal-container.show{
+    opacity: 1;
+    pointer-events: auto;
+    display: flex;
+}
+.boxButton{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.centralizar{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.especie-form {
+  max-width: 500px;
+  height: 70%;
+  margin: 40px auto;
+  padding: 20px;
+  border-radius: 12px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  margin-bottom: 6px;
+  font-weight: bold;
+  color: #333;
+}
+
+.form-group input[type="text"] {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 14px;
+  transition: border-color 0.3s ease;
+}
+
+.form-group input[type="text"]:focus{
+  border-color: #4caf50;
+  outline: none;
+  box-shadow: 0 0 5px rgba(76, 175, 80, 0.3);
+}
+
+.btnCalcular{
+    transition: 1s;
+    font-weight: bold;
+    border: 1px solid #614ca6;
+    background-color: #614ca6;
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+    border: none;
+    outline: none;
+    width: 48%;
+    height: 50px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+.btnCalcular:hover{
+    transition: 1s;
+    background-color: #fff;
+    color: #614ca6;
+    font-size: 20px;
+    font-weight: bold;
+    border: 1px solid #614ca6;
+}
+

@@ -41,7 +41,7 @@ async function cadastrar_funcionario(){
         }).then(
             function(resposta){
                 console.log(resposta);
-                window.location.href = 'login.html';
+                    window.location.href = 'login_funcionario.html';
             }
         )
     }else{
@@ -71,6 +71,7 @@ function autenticar_funcionario(){
                  sessionStorage.FUNCAO = 'Funcionario';
                  sessionStorage.ID_EMPRESA = response.id_empresa;
                  sessionStorage.NOME_EMPRESA = response.empresa_nome;
+                 window.location.href = 'dashboard.html';
             }
         ).catch(erro => {
             console.error('Deu erro:', erro);
@@ -138,6 +139,7 @@ function autenticar_empresa(){
                  sessionStorage.TELEFONE_USUARIO = response.telefone;
                  sessionStorage.FUNCAO = 'Empresa';
                  sessionStorage.CODIGO_VALIDACAO = response.codigo_validacao;
+                 window.location.href = 'dashboard.html';
             }
         ).catch(
             console.log('erro ao logar melhore')
