@@ -74,7 +74,7 @@ CREATE TABLE registro_luminosidade (
 );
 
 use orchid;
-select * from empresa;
+select * from especie_orquidea;
 select id,chave_ativacao from empresa;
 select * from funcionario;
 
@@ -82,3 +82,4 @@ SELECT f.nome from funcionario as f
 JOIN empresa as e ON e.id = f.fk_empresa 
 WHERE  e.chave_ativacao = 'okzwwjcx' AND f.email = 'eae@eae.com' AND f.senha = 'dsada@12A'
 
+       DELETE FROM especie_orquidea WHERE id = 2;
