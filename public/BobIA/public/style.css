@@ -44,6 +44,11 @@ body {
     animation: slideUp 0.8s ease forwards;
 }
 
+#container img{
+    width: 75px;
+    margin-bottom: 20px;
+}
+
 h1 {
     color: var(--roxo_escuro);
     margin-bottom: 10px;
