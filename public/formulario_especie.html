@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="assets/css/formulario_especie.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+    <link rel="icon" href="assets/imgs/flor orchid.png">
     <title>Espécies</title>
 </head>
 
@@ -24,7 +25,7 @@
                 </div>
             </div>
             <div class="tittle">
-                <h1>Espécies de orquideas</h1>
+                <h1>Espécies de <span>Orquideas</span> </h1>
                 <h3>Adicione, edite ou remova suas especies de orquideas.</h3>
             </div>
             <table border="1">
@@ -45,47 +46,48 @@
     </div>
     <div id="modal_container_adicionar"></div>
 </body>
+
 </html>
 <script>
-    function cadastrarEspecie(){
+    function cadastrarEspecie() {
         const nome_especie = input_nome.value;
         const valor_max = input_lux_max.value;
         const valor_min = input_lux_min.value;
         console.log(nome_especie)
         console.log(valor_max)
         console.log(valor_min)
-        fetch("/especies/cadastrar_especie",{
+        fetch("/especies/cadastrar_especie", {
             method: "POST",
-            headers:{
-                "Content-Type" : "application/json"
+            headers: {
+                "Content-Type": "application/json"
             },
             body: JSON.stringify({
-                nome_especie : nome_especie,
-                valor_max : valor_max,
-                valor_min : valor_min
+                nome_especie: nome_especie,
+                valor_max: valor_max,
+                valor_min: valor_min
             })
         }).then(resposta => resposta.json())
-        .then(resposta => {
-            console.log(resposta);
-            fecharModal();
-            listarEspecies();
-        }).catch(erro => {
-            console.error('Deu erro:', erro);
-        });
+            .then(resposta => {
+                console.log(resposta);
+                fecharModal();
+                listarEspecies();
+            }).catch(erro => {
+                console.error('Deu erro:', erro);
+            });
     }
-    function listarEspecies(){
-        fetch("/especies/listar_especie",{
-            method : "GET",
-            headers : {
-                "Content-type" : "application/json"
+    function listarEspecies() {
+        fetch("/especies/listar_especie", {
+            method: "GET",
+            headers: {
+                "Content-type": "application/json"
             }
         }).then(resposta => resposta.json())
-        .then(resposta => {
-            console.log(resposta);
-             tabela.innerHTML = ``;
-            for(var i=0;i<resposta.length;i++){
-                  tabela.innerHTML += 
-            `
+            .then(resposta => {
+                console.log(resposta);
+                tabela.innerHTML = ``;
+                for (var i = 0; i < resposta.length; i++) {
+                    tabela.innerHTML +=
+                        `
                  <tr>
                         <input type="hidden" id="id_especie" value="${resposta[i].id}">
                         <td>${resposta[i].nome_especie}</td>
@@ -95,26 +97,26 @@
                         <td><button onclick="deleteEspecie(${resposta[i].id})"><i class="bi bi-trash3-fill"></i></button></td>
                 </tr>
             `;
-            }
-        }).catch(erro => {
-            console.error('Deu erro:', erro);
-        });
+                }
+            }).catch(erro => {
+                console.error('Deu erro:', erro);
+            });
     }
-    function deleteEspecie(id){
+    function deleteEspecie(id) {
         var id = id;
         console.log(id)
-        fetch(`especies/deletar_especie/${id}`,{
+        fetch(`especies/deletar_especie/${id}`, {
             method: "DELETE",
-            headers:{
-                "Content-Type" : "application/json"
+            headers: {
+                "Content-Type": "application/json"
             }
         }).then(resposta => resposta.json())
-        .then(resposta => {
-            console.log(resposta);
-             listarEspecies();
-        }).catch(erro => {
-            console.error('Deu erro:', erro);
-        });
+            .then(resposta => {
+                console.log(resposta);
+                listarEspecies();
+            }).catch(erro => {
+                console.error('Deu erro:', erro);
+            });
     }
     window.onload = () => {
         verificaFuncao();
