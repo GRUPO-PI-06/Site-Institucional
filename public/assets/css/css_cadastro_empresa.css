@@ -15,7 +15,7 @@
     font-family: 'Poppins', sans-serif;
 }
 
-.containerLogin {
+.containerCadastro {
     margin-top: 30px;
     width: 100vw;
     height: 100vh;
@@ -25,9 +25,9 @@
     background-color: var(--branco_roxinho);
 }
 
-.boxLogin {
+.boxCadastro {
     width: 50%;
-    height: 55%;
+    height: 70%;
     border-radius: 20px;
     display: flex;
     background-color: var(--branco);
@@ -43,47 +43,52 @@
     align-items: center;
 }
 
-.rightCard .tittleLogin {
+.rightCard .tittleCadastro {
     font-size: 1.2rem;
     margin-top: 4%;
     margin-bottom: 2%;
     text-align: center;
 }
 
-.rightCard .tittleLogin p {
+.rightCard .tittleCadastro p {
     margin-top: 2%;
-    }
+}
 
-    .formulario {
-        width: 100%;
-        height: 50%;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-    }
-    
-    .formulario input {
-        width: 85%;
+.formulario {
+    width: 100%;
+    height: 50%;
+    display: flex;    
+    margin-top: 5%;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.formulario input {
+    width: 85%;
     height: 25px;
     border-radius: 10px;
-        padding: 10px;
+    padding: 10px;
     border: none;
     background-color: rgba(0, 0, 0, 0.036);
-        justify-content: center;
-        align-items: center;
+    justify-content: center;
+    align-items: center;
     margin-bottom: 3%;
-    }
-    
-    .formulario input::placeholder {
+}
+
+.formulario input::placeholder {
     color: #000;
     font-size: 1.2rem;
-        align-items: center;
-    }
-    
+    align-items: center;
+}
+
 .formulario input:hover {
     background-color: rgba(0, 0, 0, 0.085);
-    }
+}
+
+.rightCard .btn {
+    margin-top: 3%;
+} 
 
 .rightCard button {
     text-align: center;
@@ -100,7 +105,7 @@
 }
 
 .rightCard button:hover {
-    background-color: var(--roxo_claro);
+    background-color: var(--roxo_claro); 
     color: var(--roxo_escuro);
     box-shadow: 0px 4px 20px rgba(208, 0, 255, 0.2); 
 }

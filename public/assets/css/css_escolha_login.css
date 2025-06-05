@@ -1,27 +1,59 @@
-*{
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-    font-family: Arial, Helvetica, sans-serif;
+@import url('https://fonts.googleapis.com/css2?family=Gloock&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;1,100;1,200;1,300&family=Quicksand:wght@300..700&display=swap');
+
+:root {
+    --verde_claro: #deeada;
+    --verde: #7a9b76;
+    --roxo_claro: #d6d0ee;
+    --roxo: #614ca6;
+    --branco: #ffffff;
+    --verde2: #658861;
+    --verde_claro2: #DFF0D8;
+    --cinza_escuro: #444;
+    --roxo2: #5c3d99;
+    --roxo_escuro: #3a1a77;
+    --branco_roxinho: #F4EFFA;
 }
 
-.container{
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+}
+
+.container-escolha{
     height: 100vh;
     width: 100vw;
     display: flex;
     justify-content: center;
     align-items: center;
+    background-color: var(--branco_roxinho);
 }
 
 .boxPrincipal{
     height: 80%;
     width: 80%;
-    background-color: aqua;
-    border-radius: 12px;
+    border: 3px solid var(--roxo2);
+    background-color: white;
+    border-radius: 20px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: space-evenly;
+    margin-top: 5%;
+}
+
+.tittle{
+    font-size: 1.2rem;
+    font-weight: 900;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
 }
 
 .box_escolha{
@@ -31,12 +63,7 @@
     align-items: center;
     justify-content: space-evenly;
 }
-.tittle{
-     display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-}
+
 .box_escolha .funcionario,.box_escolha .empresa{
     width: 80%;
     height: 80%;
@@ -50,11 +77,15 @@
     height: 100%;
     background-size: cover;
     background-repeat: no-repeat;
-    border-radius: 15px;
+    border-radius: 20px;
 }
 
 .funcionario img:hover,.empresa img:hover{
     transition: 1s;
     opacity: 0.6;
     cursor: pointer;
+}
+
+.cadastro {
+    font-size: 1.2rem;
 }

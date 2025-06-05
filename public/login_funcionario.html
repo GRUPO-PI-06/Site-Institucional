@@ -4,37 +4,108 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="assets/css/css_login_copy.css">
-    <title>Document</title>
+    <link rel="stylesheet" href="assets/css/css_login.css">
+    <link rel="stylesheet" href="assets/css/css_navbar.css">
+    <link rel="icon" href="assets/imgs/flor orchid.png">
+    <title>Login Funcionario</title>
 </head>
 
 <body>
+    <!--MENU-->
+    <div class="header">
+        <div class="container">
+            <img src="assets/imgs/logo sem fundo.png" alt="logo orchid">
+            <ul class="navbar">
+                <li><a href="index.html">Início</a></li>
+                <li><a href="sobre.html">Sobre</a></li>
+                <li><a href="funcionalidades.html">Funcionalidades</a></li>
+                <li><a class="login" href="escolhaLogin.html">Login</a></li>
+                <li><a class="cadastro" href="escolhaCadastro.html">Cadastro</a></li>
+            </ul>
+        </div>
+    </div>
+
     <div class="containerLogin">
         <div class="boxLogin">
             <div class="rightCard">
                 <div class="tittleLogin">
-                    <h1>Fazer login FUNCIONARIO</h1>
+                    <h1>Fazer login</h1>
+                    <p>Entre com a sua conta. Se você não tiver conta, precisará criar uma.</p>
                 </div>
                 <form class="formulario">
                     <input type="text" id="input_email" required placeholder="E-mail">
                     <input type="text" id="input_senha" required placeholder="Senha">
                 </form>
                 <div class="btn">
-                    <button onclick="autenticar_funcionario()">Entrar</button>
+                    <button onclick="validarLogin()">Entrar</button>
                 </div>
-            </div>
-            <div class="leftCard">
-                <img src="assets/imgs/logo sem fundo.png" alt="Logo">
-                <h1>Bem-Vindo!</h1>
-                <span>
-                    Para se conectar conosco, 
-                por favor, preencha os campos com suas informações. 
-                </span>
-                <a href="cadastro.html"><button>Registrar-se</button></a>
             </div>
         </div>
     </div>
 </body>
 
 </html>
-<script src="assets/js/cadastro_login.js"></script>
+
+<script>
+    function validarEmail() {
+        var email = input_email.value;
+        if (email.length > 0) {
+            if (email.includes('@') && email.endsWith('.com')) {
+                input_email.style.border = '1px solid green';
+            } else {
+                input_email.style.border = '1px solid red';
+            }
+        } else {
+            input_email.style.border = '1px solid #604da4';
+        }
+    }
+    function validarSenha() {
+        var senha = input_senha.value;
+        input_senha.value = senha.replaceAll("'", '').replaceAll('=', '').replaceAll('-', '').replaceAll(';', '').replaceAll('"', '').replaceAll('#', '');
+        var senhaMaiuscula = senha.toUpperCase();
+        var senhaMinuscula = senha.toLowerCase();
+        var senhaExclamacao = senha.includes('!');
+        var senhaArroba = senha.includes('@');
+        var senhaSifrao = senha.includes('$');
+        var senhaPorcetagem = senha.includes('%');
+        var senhaEcomercial = senha.includes('&');
+        var senhaAsteristico = senha.includes('*');
+        var senhaUnderline = senha.includes('_');
+        var senhaNumero = false;
+        var letraMaiuscula = false;
+        var letraMinusculo = false;
+
+        if (senha != senhaMaiuscula) {
+            letraMinusculo = true;
+        } else {
+            letraMinusculo = false;
+        }
+
+        if (senha != senhaMinuscula) {
+            letraMaiuscula = true;
+        } else {
+            letraMaiuscula = false;
+        }
+        for (var i = 0; i < 10; i++) {
+            if (senha.includes(i)) {
+                senhaNumero = true;
+            }
+        }
+        if (senha.length > 0) {
+            if (senhaNumero && letraMaiuscula && letraMinusculo && (senhaArroba || senhaExclamacao || senhaSifrao || senhaPorcetagem || senhaEcomercial || senhaAsteristico || senhaUnderline)) {
+                input_senha.style.border = '1px solid green';
+            } else {
+                input_senha.style.border = '1px solid red';
+            }
+        } else {
+            input_senha.style.border = '1px solid #604da4';
+        }
+    }
+    function autenticar() {
+        if (input_senha.style.border == '1px solid green' && input_email.style.border == '1px solid green') {
+            autenticar_empresa();
+        } else {
+            alert('Preencha todos os campos corretamente')
+        }
+    }
+</script>
