@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Gloock&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;1,100;1,200;1,300&family=Quicksand:wght@300..700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Gloock&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;1,100;1,200;1,300&family=Quicksand:wght@300..700&display=swap");
 
 :root {
   --branco: #fff;
@@ -100,20 +100,28 @@ body {
   margin-bottom: 50%;
 }
 
-.icone_adicionar i {
+.icone_adicionar img {
   transition: 0.4s ease;
   cursor: pointer;
-}
-
-.icone_adicionar:hover {
-  transition: 0.4s ease;
-  color: var(--roxo_medio);
+  width: 200px;
 }
 
 .icone_adicionar span {
-      transition: 0.5s;
+  border: 2px solid #fff;
+  background: var(--roxo_medio_claro);
+  padding: 5px 15px;
+  border-radius: 10px;
+  transition: 0.5s;
   font-size: 19px;
   font-weight: 700;
+  color: #fff;
+}
+
+.icone_adicionar span:hover {
+  border: 2px solid var(--roxo_medio_claro);
+  background: var(--roxo_claro);
+    box-shadow: 0px 0px 20px var(--roxo_medio);
+
 }
 
 .center {
@@ -132,13 +140,13 @@ body {
 }
 
 .tittle h1 {
-    font-size: 38px;
-    font-weight: bold;
-    margin-bottom: 20px;
+  font-size: 38px;
+  font-weight: bold;
+  margin-bottom: 20px;
 }
 
 .tittle h1 span {
- color: var(--roxo_medio);
+  color: var(--roxo_medio);
 }
 
 table {
