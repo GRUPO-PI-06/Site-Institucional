@@ -120,8 +120,7 @@ body {
 .icone_adicionar span:hover {
   border: 2px solid var(--roxo_medio_claro);
   background: var(--roxo_claro);
-    box-shadow: 0px 0px 20px var(--roxo_medio);
-
+  box-shadow: 0px 0px 20px var(--roxo_medio);
 }
 
 .center {
