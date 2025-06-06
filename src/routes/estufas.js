@@ -8,7 +8,7 @@ router.post("/cadastrar_estufa", function (req, res) {
     estufasController.cadastrar_estufa(req, res);
 });
 
-router.get("/listar_estufa", function (req, res) {
+router.get("/listar_estufa/:id_empresa", function (req, res) {
     estufasController.listar_estufas(req, res);
 });
 

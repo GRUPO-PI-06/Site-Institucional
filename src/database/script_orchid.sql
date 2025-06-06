@@ -95,4 +95,4 @@ eo.faixa_max_lux  as "luminosidade maxima"
 FROM estufa as es
 JOIN especie_orquidea as eo
 ON eo.id = es.fk_especie
-WHERE es.fk_empresa = 1;
+WHERE es.fk_empresa = 1; 

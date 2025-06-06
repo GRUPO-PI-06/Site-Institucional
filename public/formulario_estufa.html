@@ -32,8 +32,8 @@
                     <tr>
                         <th>Nome da estufa</th>
                         <th>Tipo de orquidea monitorada</th>
-                        <th>Editar Espécie</th>
-                        <th>Apagar Espécie</th>
+                        <th>Editar Estufa</th>
+                        <th>Apagar Estufa</th>
                     </tr>
                 </thead>
                 <tbody id="tabela">
@@ -49,6 +49,8 @@
     function cadastrarEstufa(){
         const nome_estufa = input_nome.value;
         const id_especie = select_especies.value;
+        const id_empresa = sessionStorage.ID_USUARIO;
+        const qtd_orquideas = input_qtd.value;
 
         console.log(nome_estufa);
         console.log(id_especie);
@@ -60,7 +62,9 @@
             },
             body: JSON.stringify({
                 nome_estufa : nome_estufa,
-                id_especie : id_especie
+                id_especie : id_especie,
+                qtd_orquideas : qtd_orquideas,
+                id_empresa : id_empresa
             })
         }).then(resposta => resposta.json())
         .then(resposta => {
@@ -96,7 +100,8 @@
         });
     }
     function listarEstufas(){
-        fetch("/estufas/listar_estufa",{
+        const id_empresa = sessionStorage.ID_USUARIO;
+        fetch(`/estufas/listar_estufa/${id_empresa}`,{
             method : "GET",
             headers : {
                 "Content-type" : "application/json"
@@ -107,7 +112,7 @@
              tabela.innerHTML = ``;
              for(var i=0;i<resposta.length;i++){
                 var id = resposta[i].id;
-                select_especies.innerHTML += 
+                tabela.innerHTML += 
             `
                   <tr>
                         <input type="hidden" id="id_especie" value="${resposta[i].id}">
@@ -155,11 +160,15 @@
                 <h1>Adicionando uma espécie de orquidea</h1>
                     <div class="especie-form">
                         <div class="form-group">
-                            <label for="nome">Nome da espécie:</label>
+                            <label for="nome">Nome da Estufa:</label>
                             <input type="text" id="input_nome">
                         </div>
                         <div class="form-group">
-                            <label for="lux-max">Tipos de especies cadastradas:</label>
+                            <label for="input_qtd">Quantidade de orquideas na estufa:</label>
+                            <input type="text" id="input_qtd">
+                        </div>
+                        <div class="form-group">
+                            <label for="lux-max">Selecione a especie da orquidea a ser monitorada:</label>
                             <select id="select_especies">
 
                             </select>
