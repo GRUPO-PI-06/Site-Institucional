@@ -190,7 +190,8 @@
         }
 
         let chartPizza;
-
+                    const labels = [];
+                    const valores = [];
         function atualizarGraficos() {
             fetch(`/dashboard/grafico/pizza/${id_empresa}`)
                 .then(res => res.json())
@@ -217,19 +218,15 @@
 
             fetch(`/dashboard/grafico/linha/${id_empresa}`)
                 .then(res => res.json())
-                .then(dados => {
+                .then(graf => {
                     const ctx = document.getElementById('myChart').getContext('2d');
-                    const labels = ['Segunda-feira', 'Terça-feira', 'Quarta-feira', 'Quinta-feira', 'Sexta-feira', 'Sabado', 'Domingo'];
-                    const valores = [];
-                    for (let i = 0; i < dados.length; i++) {
-                        valores.push(dados[i].media_lux);
+
+                    for (let i = 0; i < graf.length; i++) {
+                        valores.push(graf[i].media_lux);
+                        labels.push(graf[i].data_registro.split('T')[0])
                     }
-                    valores.reverse();
-                    if (window.chartLinha) window.chartLinha.destroy();
-                    window.chartLinha = new Chart(ctx, {
-                        type: 'line',
-                        data: {
-                            labels: labels,
+                    let dados = {
+                        labels: labels,
                             datasets: [{
                                 label: 'Média de Lux',
                                 data: valores,
@@ -239,14 +236,69 @@
                                 tension: 0.3,
                                 fill: true
                             }]
-                        },
+                    }
+                    valores.reverse();
+                    if (window.chartLinha) window.chartLinha.destroy();
+                    window.chartLinha = new Chart(ctx, {
+                        type: 'line',
+                        data: dados,
                         options: {
                             scales: {
                                 y: { beginAtZero: true }
                             }
                         }
                     });
-                });
+                setInterval(() => tempoReal(id_empresa, dados, chartLinha), 2000)
+                })
+
+        }
+
+
+        function tempoReal(id_empresa,dados, chartLinha) {
+            fetch(`/dashboard/tempo-real/${id_empresa}`, { cache: 'no-store', method: 'GET'}
+            ).then(function (response){
+                if (response.ok){
+                    response.json().then(function (resultado){
+                        console.log(`DADOS RECEBIDOS ${JSON.stringify(resultado)}`)
+                        console.log(dados)
+                        atualizarTempoReal(resultado, dados, chartLinha)
+                    })
+                }else{
+                    console.error('Nao retornou dado')
+                }
+            }).catch(function (error){
+                console.error(`Erro na Obtenção ${error.mesage}`)
+            })
+
+        }
+
+        function atualizarTempoReal(resultado, dados, chartLinha){
+            
+            // if (resultado[0].media_lux == dados.datasets[0].data[0]){
+                // console.log('nada novoooooooo')
+            // }else{
+                // if (resultado[0].data_registro.split('T')[0] == '2025-06-06')
+                // {
+
+                // }
+//                 dados.labels.shift()
+//                 dados.labels.push(resultado[0].data_registro.split('T')[0])
+// }            
+                console.log(resultado[0].valores, dados.datasets[0].data)
+                if (resultado[0].valores == dados.datasets[0].data){
+                    
+                }else{
+                dados.datasets[0].data.splice(6, 1)
+                dados.datasets[0].data.push(resultado[0].media_lux)
+                chartLinha.update()
+                }
+
+
+                setTimeout(() => {
+                    atualizarGraficos
+                    aplicarStatusKPI('kpi-luminosidade-atual', resultado[0].media_lux, 'luminosidade');
+                }, 2000);
+            // }
         }
     </script>
 </body>

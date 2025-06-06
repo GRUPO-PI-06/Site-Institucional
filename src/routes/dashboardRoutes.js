@@ -16,4 +16,8 @@ router.get("/grafico/linha/:id_empresa", dashboardController.graficoLinha);
 router.get("/estufas/:id_empresa", dashboardController.listarEstufas);
 router.get("/especies", dashboardController.listarEspecies);
 
+router.get("/tempo-real/:id_empresa", function (req, res){
+    dashboardController.tempoReal(req, res)
+});
+
 module.exports = router;

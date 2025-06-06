@@ -71,7 +71,7 @@ function graficoLinha(id_empresa) {
         JOIN estufa es ON s.fk_estufa = es.id
         WHERE es.fk_empresa = ${id_empresa}
         GROUP BY DATE(rl.horario_registro)
-        ORDER BY data_registro DESC
+        ORDER BY data_registro ASC
         LIMIT 7;
     `;
     return database.executar(sql);
@@ -94,6 +94,15 @@ function listarEspecies() {
     return database.executar(sql);
 }
 
+function tempoReal(id_empresa) {
+    const sql = `
+        SELECT DATE(rl.horario_registro) AS data_registro, AVG(rl.intensidade_luz) AS media_lux
+        FROM registro_luminosidade rl JOIN sensor s ON rl.fk_sensor = s.id JOIN estufa es ON s.fk_estufa = es.id WHERE es.fk_empresa = ${id_empresa}
+        GROUP BY DATE(rl.horario_registro) ORDER BY data_registro DESC LIMIT 1;`
+
+    return database.executar(sql);
+}
+
 module.exports = {
     kpiTotalOrquideas,
     kpiMediaLuminosidade,
@@ -102,5 +111,6 @@ module.exports = {
     graficoPizza,
     graficoLinha,
     listarEstufas,
-    listarEspecies
+    listarEspecies,
+    tempoReal
 };

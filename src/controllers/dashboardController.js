@@ -48,6 +48,12 @@ function listarEspecies(req, res) {
         .catch(e => res.status(500).json(e));
 }
 
+function tempoReal(req, res){
+    dashboardModel.tempoReal(req.params.id_empresa)
+    .then(resposta => res.json(resposta))
+    .catch(erro => res.status(500).json(erro))
+}
+
 module.exports = {
     kpiTotalOrquideas,
     kpiMediaLuminosidade,
@@ -56,5 +62,6 @@ module.exports = {
     graficoPizza,
     graficoLinha,
     listarEstufas,
-    listarEspecies
+    listarEspecies,
+    tempoReal
 };
