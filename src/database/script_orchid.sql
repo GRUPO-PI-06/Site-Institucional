@@ -76,23 +76,21 @@ CREATE TABLE registro_luminosidade (
 insert into empresa(nome,cnpj,email,senha,chave_ativacao,telefone)
  values('Empresa 1','123456789098765432','empresa@gmail.com','Empresa12@','funciona','123456789098765');
 insert into especie_orquidea(nome_especie,faixa_min_lux,faixa_max_lux) values('Cattleya',2000,4000);
-insert into estufa(nome_estufa,fk_especie,fk_empresa) values('Estufa 1',1,1);
+insert into estufa(nome_estufa,qtd_orquideas,fk_especie,fk_empresa) values('Estufa 1',100,1,1);
 insert into sensor(status_sensor,fk_estufa) values('Ativo',1);
 insert into registro_luminosidade(intensidade_luz,horario_registro,fk_sensor) values(3000,DEFAULT,1);
+insert into registro_luminosidade(intensidade_luz,horario_registro,fk_sensor) values(1000,DEFAULT,1);
+insert into registro_luminosidade(intensidade_luz,horario_registro,fk_sensor) values(2200,DEFAULT,1);
+insert into registro_luminosidade(intensidade_luz,horario_registro,fk_sensor) values(4540,DEFAULT,1);
+insert into registro_luminosidade(intensidade_luz,horario_registro,fk_sensor) values(2354,DEFAULT,1);
+insert into registro_luminosidade(intensidade_luz,horario_registro,fk_sensor) values(1534,DEFAULT,1);
+insert into registro_luminosidade(intensidade_luz,horario_registro,fk_sensor) values(1235,DEFAULT,1);
+insert into registro_luminosidade(intensidade_luz,horario_registro,fk_sensor) values(1235,DEFAULT,1);
+insert into registro_luminosidade(intensidade_luz,horario_registro,fk_sensor) values(3222,'2025-06-04 20:17:25',1);
+insert into registro_luminosidade(intensidade_luz,horario_registro,fk_sensor) values(1000,'2025-06-04 20:17:25',1);
 
 SELECT * FROM empresa;
 SELECT * FROM especie_orquidea;
 SELECT * FROM estufa;
 SELECT * FROM sensor;
 SELECT * FROM registro_luminosidade;
-
--- filtro
-SELECT 
-es.nome_estufa as "Nome da estufa",
-eo.nome_especie  as "Nome da especie",
-eo.faixa_min_lux  as "luminosidade minima",
-eo.faixa_max_lux  as "luminosidade maxima"
-FROM estufa as es
-JOIN especie_orquidea as eo
-ON eo.id = es.fk_especie
-WHERE es.fk_empresa = 1; 
