@@ -1,31 +1,47 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Dashboard | Orchid</title>
-    <link rel="stylesheet" href="assets/css/dashboard.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="assets/css/dashboard.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
 </head>
 <body>
     <div class="container-dashboard">
         <aside class="barra-lateral">
             <button class="btn-expandir"><i class="fas fa-bars"></i></button>
-            <nav class="navbar" id="nav_bar">
-            </nav>
+            <nav class="navbar" id="nav_bar"></nav>
         </aside>
         <main class="principal">
             <div class="grade-dashboard">
+                <div class="painel-filtros">
+                    <div class="info-box">
+                        <strong>Limites de luminosidade (Geral)</strong>
+                        <p>
+                            Crítico &lt; 2000 ou &gt; 8000<br /><br />
+                            Moderado   2000–4000 ou 7500–8000<br /><br />
+                            Ótimo   4000–7500<br />
+                        </p>
+                    </div>
+                    <div class="info-box">
+                        <strong>Limites de desvios</strong>
+                        <p>
+                            Até 2: aceitável<br />
+                            Até 5: crítico<br />
+                            Acima de 5: muito crítico
+                        </p>
+                    </div>
+                </div>
                 <div class="coluna-graficos">
-                    <div class="grafico-linha"> <canvas id="myChart"></canvas></div>
-                    <div class="grafico-pizza">Gráfico de Pizza</div>
+                    <div class="grafico-linha">Média lux semanal<canvas id="myChart"></canvas></div>
+                    <div class="grafico-pizza">Total de orquídeas de cada espécie<canvas id="graficoPizza"></canvas></div>
                 </div>
                 <div class="coluna-kpis">
-                    <div class="kpi">KPI 1</div>
-                    <div class="kpi">KPI 2</div>
-                    <div class="kpi">KPI 3</div>
-                    <div class="kpi">KPI 4</div>
-                    <div class="kpi">KPI 5</div>
+                    <div class="kpi">Total Orquídeas: <span id="kpi-total-orquideas">-</span></div>
+                    <div class="kpi">Média Luminosidade: <span id="kpi-media-luminosidade">-</span></div>
+                    <div class="kpi">Luminosidade Atual: <span id="kpi-luminosidade-atual">-</span></div>
+                    <div class="kpi">Desvios dos limites lux: <span id="kpi-desvios">-</span></div>
                 </div>
             </div>
             <div class="barra-legenda">
@@ -41,82 +57,197 @@
             </div>
         </main>
     </div>
-    
-</body>
-</html>
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-<script>
-    window.onload = () =>{
-        verificaFuncao();
-    }
-    const sidebar = document.querySelector('.barra-lateral');
-    const btn = document.querySelector('.btn-expandir');
-    btn.onclick = () => sidebar.classList.toggle('expandida');
-    
-    function verificaFuncao(){
-        if(sessionStorage.FUNCAO == 'Empresa'){
-            nav_bar.innerHTML = 
-            `
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        let id_empresa = sessionStorage.ID_EMPRESA || 1;
+
+        window.onload = () => {
+            verificaFuncao();
+            carregarEstufas();
+            atualizarKPIs();
+            atualizarGraficos();
+
+            const sidebar = document.querySelector('.barra-lateral');
+            const btnExpandir = document.querySelector('.btn-expandir');
+            if (btnExpandir) {
+                btnExpandir.onclick = () => {
+                    sidebar.classList.toggle('expandida');
+                };
+            }
+        };
+
+        function getStatusLuminosidade(valor) {
+            if (valor < 2000 || valor > 8000) return 'critico';
+            if ((valor >= 2000 && valor < 4000) || (valor > 7500 && valor <= 8000)) return 'moderado';
+            return 'otimo';
+        }
+
+        function getStatusDesvios(valor) {
+            if (valor <= 2) return 'otimo';
+            if (valor <= 5) return 'moderado';
+            return 'critico';
+        }
+
+        function aplicarStatusKPI(idElemento, valor, tipo) {
+            const elSpan = document.getElementById(idElemento);
+            elSpan.textContent = valor;
+
+            let status;
+            if (tipo === 'luminosidade') {
+                status = getStatusLuminosidade(valor);
+            } else if (tipo === 'desvios') {
+                status = getStatusDesvios(valor);
+            } else {
+                status = 'otimo';
+            }
+
+            const elKPI = elSpan.parentElement;
+            elKPI.classList.remove('critico', 'moderado', 'otimo');
+            elKPI.classList.add(status);
+        }
+
+        function verificaFuncao() {
+            nav_bar.innerHTML = `
                 <a href="#" class="nav-item selecionado">
                     <i class="fas fa-chart-line"></i> <span>Dashboard</span>
                 </a>
-                <a href="#" class="nav-item">
+                <a href="formulario_estufa.html" class="nav-item">
                     <i class="fas fa-file-alt"></i> <span>Estufas</span>
                 </a>
                 <a href="formulario_especie.html" class="nav-item">
-                    <i class="fas fa-file-alt"></i> <span>Espécies de orquideas</span>
+                    <i class="fas fa-file-alt"></i> <span>Espécies de orquídeas</span>
                 </a>
-                <a href="#" class="nav-item">
-                    <i class="fas fa-chart-line"></i> <span>Sair</span>
-                </a>
-            `;
-        }else{
-            nav_bar.innerHTML = 
-            `
-                <a href="#" class="nav-item selecionado">
-                    <i class="fas fa-chart-line"></i> <span>Dashboard</span>
-                </a>
-                <a href="#" class="nav-item selecionado">
-                    <i class="fas fa-chart-line"></i><span>Sair</span>
+                <div style="flex:1"></div>
+                <a href="#" class="nav-item" id="btn-logout" style="margin-top:auto;">
+                    <i class="fas fa-sign-out-alt"></i> <span>Sair</span>
                 </a>
             `;
+            document.getElementById('btn-logout').onclick = function() {
+                sessionStorage.clear();
+                window.location.href = "login.html";
+            };
         }
-    }
-    const ctx = document.getElementById('myChart');
-    var data = [3000, 3500, 3900, 4000, 1900, 3000, 2000];
-        const barChart =  new Chart(ctx, {
-        type: 'line',
-        data: {
-        labels: ['Segunda-feira', 'Terça-feira', 'Quarta-feira', 'Quinta-feira', 'Sexta-feira', 'Sabado','Domingo'],
-        datasets: [{
-        label: 'Lux',
-        data: data,
-        borderColor: '#6a0dad', 
-        backgroundColor:'#afa1e150',
-        borderWidth: 1,
-        tension: 0.3, 
-        fill: true, 
-            }]
-        },
-        options: {
-            scales: {
-            y: {
-                beginAtZero: true
-            }
-            },
-            plugins: {
-            legend: {
-                position: 'bottom',
-                align: 'center'
-            },
-            title: {
-                display: true,
-                text: 'Intensidade de luz diaria(em lux)',
-                font: {
-                size: 18
-                }
-            }
-            }
+
+        function carregarEstufas() {
+            fetch(`/dashboard/estufas/${id_empresa}`)
+                .then(res => res.json())
+                .then(estufas => {
+                    const select = document.getElementById('select-estufa');
+                    if(select) { // Verifica se o elemento existe antes de manipular
+                        select.innerHTML = '<option>Geral</option>';
+                        for (let i = 0; i < estufas.length; i++) {
+                            const e = estufas[i];
+                            const opt = document.createElement('option');
+                            opt.value = e.id || e.id_estufa || e.nome_estufa;
+                            opt.textContent = `${e.nome_estufa} (${e.nome_especie})`;
+                            select.appendChild(opt);
+                        }
+                    }
+                });
         }
-        });
-</script>
+
+        function atualizarKPIs() {
+            fetch(`/dashboard/kpi/total-orquideas/${id_empresa}`)
+                .then(res => res.json())
+                .then(data => {
+                    const total = data.total || '-';
+                    document.getElementById('kpi-total-orquideas').textContent = total;
+                });
+
+            fetch(`/dashboard/kpi/media-luminosidade/${id_empresa}`)
+                .then(res => res.json())
+                .then(data => {
+                    const media = data.media || 0;
+                    aplicarStatusKPI('kpi-media-luminosidade', media, 'luminosidade');
+                    if (media < 2000 || media > 8000) {
+                        alert(`⚠️ Média de luminosidade crítica: ${media} lux!`);
+                    } else if ((media >= 2000 && media < 4000) || (media > 7500 && media <= 8000)) {
+                        alert(`⚠️ Média de luminosidade moderada: ${media} lux.`);
+                    }
+                });
+
+            fetch(`/dashboard/kpi/luminosidade-atual/${id_empresa}`)
+                .then(res => res.json())
+                .then(data => {
+                    const atual = data.ultimo_registro || 0;
+                    aplicarStatusKPI('kpi-luminosidade-atual', atual, 'luminosidade');
+                });
+
+            fetch(`/dashboard/kpi/desvios/${id_empresa}`)
+                .then(res => res.json())
+                .then(data => {
+                    let totalDesvios = 0;
+                    for (let i = 0; i < data.length; i++) {
+                        totalDesvios += data[i].numero_de_desvios;
+                    }
+                    aplicarStatusKPI('kpi-desvios', totalDesvios, 'desvios');
+                    if (totalDesvios > 5) {
+                        alert(`❌ Desvios muito críticos: ${totalDesvios}`);
+                    } else if (totalDesvios > 2) {
+                        alert(`⚠️ Desvios em nível crítico: ${totalDesvios}`);
+                    }
+                });
+        }
+
+        let chartPizza;
+
+        function atualizarGraficos() {
+            fetch(`/dashboard/grafico/pizza/${id_empresa}`)
+                .then(res => res.json())
+                .then(dados => {
+                    const ctx = document.getElementById('graficoPizza').getContext('2d');
+                    const labels = [];
+                    const valores = [];
+                    for (let i = 0; i < dados.length; i++) {
+                        labels.push(dados[i].nome_especie);
+                        valores.push(dados[i].total);
+                    }
+                    if (chartPizza) chartPizza.destroy();
+                    chartPizza = new Chart(ctx, {
+                        type: 'pie',
+                        data: {
+                            labels: labels,
+                            datasets: [{
+                                data: valores,
+                                backgroundColor: ['#ff6384', '#36a2eb', '#ffce56', '#8bc34a', '#ff9800']
+                            }]
+                        }
+                    });
+                });
+
+            fetch(`/dashboard/grafico/linha/${id_empresa}`)
+                .then(res => res.json())
+                .then(dados => {
+                    const ctx = document.getElementById('myChart').getContext('2d');
+                    const labels = ['Segunda-feira', 'Terça-feira', 'Quarta-feira', 'Quinta-feira', 'Sexta-feira', 'Sabado', 'Domingo'];
+                    const valores = [];
+                    for (let i = 0; i < dados.length; i++) {
+                        valores.push(dados[i].media_lux);
+                    }
+                    valores.reverse();
+                    if (window.chartLinha) window.chartLinha.destroy();
+                    window.chartLinha = new Chart(ctx, {
+                        type: 'line',
+                        data: {
+                            labels: labels,
+                            datasets: [{
+                                label: 'Média de Lux',
+                                data: valores,
+                                borderColor: '#6a0dad',
+                                backgroundColor: '#afa1e150',
+                                borderWidth: 2,
+                                tension: 0.3,
+                                fill: true
+                            }]
+                        },
+                        options: {
+                            scales: {
+                                y: { beginAtZero: true }
+                            }
+                        }
+                    });
+                });
+        }
+    </script>
+</body>
+</html>

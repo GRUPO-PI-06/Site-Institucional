@@ -46,121 +46,19 @@
         </main>
     </div>
     <div id="modal_container_adicionar"></div>
-</body>
 
-</html>
-<script>
-    function cadastrarEspecie() {
-        const nome_especie = input_nome.value;
-        const valor_max = input_lux_max.value;
-        const valor_min = input_lux_min.value;
-        console.log(nome_especie)
-        console.log(valor_max)
-        console.log(valor_min)
-        fetch("/especies/cadastrar_especie", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify({
-                nome_especie: nome_especie,
-                valor_max: valor_max,
-                valor_min: valor_min
-            })
-        }).then(resposta => resposta.json())
-            .then(resposta => {
-                console.log(resposta);
-                fecharModal();
-                listarEspecies();
-            }).catch(erro => {
-                console.error('Deu erro:', erro);
-            });
-    }
-    function listarEspecies() {
-        fetch("/especies/listar_especie", {
-            method: "GET",
-            headers: {
-                "Content-type": "application/json"
-            }
-        }).then(resposta => resposta.json())
-            .then(resposta => {
-                console.log(resposta);
-                tabela.innerHTML = ``;
-                for (var i = 0; i < resposta.length; i++) {
-                    tabela.innerHTML +=
-                        `
-                 <tr>
-                        <input type="hidden" id="id_especie" value="${resposta[i].id}">
-                        <td>${resposta[i].nome_especie}</td>
-                        <td>${resposta[i].faixa_min_lux}</td>
-                        <td>${resposta[i].faixa_max_lux}</td>
-                        <td><button onclick="updateEspecie(${resposta[i].id})"><i class="bi bi-gear"></i></button></td>
-                        <td><button onclick="deleteEspecie(${resposta[i].id})"><i class="bi bi-trash3-fill"></i></button></td>
-                </tr>
-            `;
-                }
-            }).catch(erro => {
-                console.error('Deu erro:', erro);
-            });
-    }
-    function deleteEspecie(id) {
-        var id = id;
-        console.log(id)
-        fetch(`especies/deletar_especie/${id}`, {
-            method: "DELETE",
-            headers: {
-                "Content-Type": "application/json"
-            }
-        }).then(resposta => resposta.json())
-            .then(resposta => {
-                console.log(resposta);
-                listarEspecies();
-            }).catch(erro => {
-                console.error('Deu erro:', erro);
-            });
-    }
-    window.onload = () => {
-        verificaFuncao();
-        listarEspecies();
-    }
-    const sidebar = document.querySelector('.barra-lateral');
-    const btn = document.querySelector('.btn-expandir');
-    btn.onclick = () => sidebar.classList.toggle('expandida');
-    function chamarAdicionar() {
-        console.log("chamou")
-        modal_container_adicionar.innerHTML = `
-        <div class="modal-container show">
-            <div class="modal-overlay" onclick="fecharModal()"></div>
-            <div class="modal">
-                <h1>Adicionando uma espécie de orquidea</h1>
-                    <div class="especie-form">
-                        <div class="form-group">
-                            <label for="nome">Nome da espécie:</label>
-                            <input type="text" id="input_nome">
-                        </div>
-                        <div class="form-group">
-                            <label for="lux-max">Luminosidade máxima da espécie (em lux):</label>
-                            <input type="text" id="input_lux_max"
-                        </div>
-                        <div class="form-group">
-                            <label for="lux-min">Luminosidade mínima da espécie (em lux):</label>
-                            <input type="text" id="input_lux_min">
-                        </div>
-                        <div class="boxButton">
-                            <button  class="btnCalcular" onclick="cadastrarEspecie()">Cadastrar</button>
-                        </div>
-                    </div>
-            </div>
-        </div>
-        `
-    }
-    function fecharModal() {
-        modal_container_adicionar.innerHTML = ``;
-    }
-    function verificaFuncao() {
-        if (sessionStorage.FUNCAO == 'Empresa') {
-            nav_bar.innerHTML =
-                `
+    <script>
+        window.onload = () => {
+            verificaFuncao();
+            listarEspecies();
+
+            const sidebar = document.querySelector('.barra-lateral');
+            const btn = document.querySelector('.btn-expandir');
+            btn.onclick = () => sidebar.classList.toggle('expandida');
+        }
+
+        function verificaFuncao() {
+            nav_bar.innerHTML = `
                 <a href="dashboard.html" class="nav-item">
                     <i class="fas fa-chart-line"></i> <span>Dashboard</span>
                 </a>
@@ -168,22 +66,124 @@
                     <i class="fas fa-file-alt"></i> <span>Estufas</span>
                 </a>
                 <a href="formulario_especie.html" class="nav-item selecionado">
-                    <i class="fas fa-file-alt"></i> <span>Espécies de orquideas</span>
+                    <i class="fas fa-file-alt"></i> <span>Espécies de orquídeas</span>
                 </a>
-                <a href="index.html" class="nav-item">
-                    <i class="fas fa-chart-line"></i> <span>Sair</span>
-                </a>
-            `;
-        } else {
-            nav_bar.innerHTML =
-                `
-                <a href="dashboard.html" class="nav-item selecionado">
-                    <i class="fas fa-chart-line"></i> <span>Dashboard</span>
-                </a>
-                <a href="index.html" class="nav-item selecionado">
-                    <i class="fas fa-chart-line"></i><span>Sair</span>
+                <div style="flex:1"></div>
+                <a href="#" class="nav-item" id="btn-logout" style="margin-top:auto;">
+                    <i class="fas fa-sign-out-alt"></i> <span>Sair</span>
                 </a>
             `;
+            document.getElementById('btn-logout').onclick = function() {
+                sessionStorage.clear();
+                window.location.href = "login.html";
+            };
         }
-    }
-</script>
+
+        function cadastrarEspecie() {
+            const nome_especie = input_nome.value;
+            const valor_max = input_lux_max.value;
+            const valor_min = input_lux_min.value;
+            console.log(nome_especie)
+            console.log(valor_max)
+            console.log(valor_min)
+            fetch("/especies/cadastrar_especie", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    nome_especie: nome_especie,
+                    valor_max: valor_max,
+                    valor_min: valor_min
+                })
+            }).then(resposta => resposta.json())
+                .then(resposta => {
+                    console.log(resposta);
+                    fecharModal();
+                    listarEspecies();
+                }).catch(erro => {
+                    console.error('Deu erro:', erro);
+                });
+        }
+
+        function listarEspecies() {
+            fetch("/especies/listar_especie", {
+                method: "GET",
+                headers: {
+                    "Content-type": "application/json"
+                }
+            }).then(resposta => resposta.json())
+                .then(resposta => {
+                    console.log(resposta);
+                    tabela.innerHTML = ``;
+                    for (var i = 0; i < resposta.length; i++) {
+                        tabela.innerHTML +=
+                            `
+                    <tr>
+                        <input type="hidden" id="id_especie" value="${resposta[i].id}">
+                        <td>${resposta[i].nome_especie}</td>
+                        <td>${resposta[i].faixa_min_lux}</td>
+                        <td>${resposta[i].faixa_max_lux}</td>
+                        <td><button onclick="updateEspecie(${resposta[i].id})"><i class="bi bi-gear"></i></button></td>
+                        <td><button onclick="deleteEspecie(${resposta[i].id})"><i class="bi bi-trash3-fill"></i></button></td>
+                    </tr>
+                `;
+                    }
+                }).catch(erro => {
+                    console.error('Deu erro:', erro);
+                });
+        }
+
+        function deleteEspecie(id) {
+            var id = id;
+            console.log(id)
+            fetch(`especies/deletar_especie/${id}`, {
+                method: "DELETE",
+                headers: {
+                    "Content-Type": "application/json"
+                }
+            }).then(resposta => resposta.json())
+                .then(resposta => {
+                    console.log(resposta);
+                    listarEspecies();
+                }).catch(erro => {
+                    console.error('Deu erro:', erro);
+                });
+        }
+
+        function chamarAdicionar() {
+            console.log("chamou")
+            modal_container_adicionar.innerHTML = `
+            <div class="modal-container show">
+                <div class="modal-overlay" onclick="fecharModal()"></div>
+                <div class="modal">
+                    <h1>Adicionando uma espécie de orquidea</h1>
+                        <div class="especie-form">
+                            <div class="form-group">
+                                <label for="nome">Nome da espécie:</label>
+                                <input type="text" id="input_nome">
+                            </div>
+                            <div class="form-group">
+                                <label for="lux-max">Luminosidade máxima da espécie (em lux):</label>
+                                <input type="text" id="input_lux_max"
+                            </div>
+                            <div class="form-group">
+                                <label for="lux-min">Luminosidade mínima da espécie (em lux):</label>
+                                <input type="text" id="input_lux_min">
+                            </div>
+                            <div class="boxButton">
+                                <button  class="btnCalcular" onclick="cadastrarEspecie()">Cadastrar</button>
+                            </div>
+                        </div>
+                </div>
+            </div>
+            `
+        }
+
+        function fecharModal() {
+            modal_container_adicionar.innerHTML = ``;
+        }
+    </script>
+</body>
+
+</html>

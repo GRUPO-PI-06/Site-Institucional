@@ -94,3 +94,61 @@ SELECT * FROM especie_orquidea;
 SELECT * FROM estufa;
 SELECT * FROM sensor;
 SELECT * FROM registro_luminosidade;
+
+-- FILTRO PARA ENTENDER SE A ESTUFA ESTA DENTRO DO PADRAO DE LUMINOSIDADE
+SELECT 
+es.nome_estufa as "Nome da estufa",
+eo.nome_especie  as "Nome da especie",
+eo.faixa_min_lux  as "luminosidade minima",
+eo.faixa_max_lux  as "luminosidade maxima"
+FROM estufa as es
+JOIN especie_orquidea as eo
+ON eo.id = es.fk_especie
+WHERE es.fk_empresa = 1; 
+
+-- KPI QUE CONTEM A MEDIA DE LUMINOSIDADE DA ESTUFA DE DETERMINADA EMPRESA
+SELECT 
+ ROUND(AVG(re.intensidade_luz),2)
+ FROM estufa as es
+ JOIN sensor as se
+ ON es.id = se.fk_estufa 
+ JOIN registro_luminosidade as re
+ ON se.id = re.fk_sensor
+ WHERE es.fk_empresa = 1;
+
+ -- KPI LUMINOSIDADE ATUAL (MAIS RECENTE)
+ SELECT re.intensidade_luz as "Ultimo registro" -- (MAIS RECENTE)
+ FROM registro_luminosidade as re
+ ORDER BY re.horario_registro; 
+
+-- KPI pro geral(somar) as especifico(estufa)
+ SELECT SUM(qtd_orquideas) FROM estufa where fk_empresa = 1; -- TUDO PERTENCE A UMA EMPRESA SÓ
+ SELECT qtd_orquideas FROM estufa where fk_empresa = 1; -- TUDO PERTENCE A UMA EMPRESA SÓ
+
+-- KPI PRA numero de vezes em q a estufa saiu do recomendado
+SELECT
+  day(rl.horario_registro) AS dia, -- PEGAMO O DIA 
+  e.nome_estufa,
+  COUNT(*) AS numero_de_desvios
+FROM registro_luminosidade rl
+JOIN sensor s ON rl.fk_sensor = s.id
+JOIN estufa e ON s.fk_estufa = e.id
+JOIN especie_orquidea eo ON e.fk_especie = eo.id
+WHERE rl.intensidade_luz < eo.faixa_min_lux OR rl.intensidade_luz > eo.faixa_max_lux
+GROUP BY dia, e.nome_estufa;
+
+-- GRAFICO PIZZA // Total de orquideas por especie das estufas da empresa
+SELECT eo.nome_especie,SUM(es.qtd_orquideas)
+FROM estufa as es
+JOIN especie_orquidea as eo 
+ON eo.id = es.fk_especie
+WHERE es.fk_empresa = 1
+GROUP BY eo.nome_especie;
+
+-- GRAFICO DE MEDIA POR SEMANA
+SELECT
+     DATE(horario_registro) as data_registro,
+    AVG(intensidade_luz) as media_lux
+    FROM registro_luminosidade
+    GROUP BY DATE(horario_registro)
+    LIMIT 7;

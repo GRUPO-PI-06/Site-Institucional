@@ -20,13 +20,16 @@ var usuarioRouter = require("./src/routes/usuarios");
 var empresasRouter = require("./src/routes/empresas");
 var especiesRouter = require("./src/routes/especies.js");
 var estufasRouter = require("./src/routes/estufas");
+var dashboardRouter = require("./src/routes/dashboardRoutes"); 
 
+app.use("/dashboard", dashboardRouter); 
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, "public")));
 
 app.use(cors());
+
 
 app.use("/", indexRouter);
 app.use("/usuarios", usuarioRouter);
