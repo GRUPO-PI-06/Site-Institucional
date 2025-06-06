@@ -52,30 +52,30 @@
     const btn = document.querySelector('.btn-expandir');
     btn.onclick = () => sidebar.classList.toggle('expandida');
     
-    function verificaFuncao(){
-        if(sessionStorage.FUNCAO = 'Empresa'){
-            nav_bar.innerHTML = 
-            `
-                <a href="#" class="nav-item selecionado">
+    function verificaFuncao() {
+        if (sessionStorage.FUNCAO == 'Empresa') {
+            nav_bar.innerHTML =
+                `
+                <a href="dashboard.html" class="nav-item selecionado">
                     <i class="fas fa-chart-line"></i> <span>Dashboard</span>
                 </a>
-                <a href="#" class="nav-item">
+                <a href="formulario_estufa.html" class="nav-item">
                     <i class="fas fa-file-alt"></i> <span>Estufas</span>
                 </a>
                 <a href="formulario_especie.html" class="nav-item">
                     <i class="fas fa-file-alt"></i> <span>Espécies de orquideas</span>
                 </a>
-                <a href="#" class="nav-item">
+                <a href="index.html" class="nav-item">
                     <i class="fas fa-chart-line"></i> <span>Sair</span>
                 </a>
             `;
-        }else{
-            nav_bar.innerHTML = 
-            `
-                <a href="#" class="nav-item selecionado">
+        } else {
+            nav_bar.innerHTML =
+                `
+                <a href="dashboard.html" class="nav-item selecionado">
                     <i class="fas fa-chart-line"></i> <span>Dashboard</span>
                 </a>
-                <a href="#" class="nav-item selecionado">
+                <a href="index.html" class="nav-item selecionado">
                     <i class="fas fa-chart-line"></i><span>Sair</span>
                 </a>
             `;
